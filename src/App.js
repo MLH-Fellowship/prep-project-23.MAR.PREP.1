@@ -54,7 +54,7 @@ function App() {
           type="text"
           value={city}
           onChange={event => setCity(event.target.value)} />
-        <h2>Select a date and time:</h2>
+        <h2>Select a date and time </h2>
         <input
           type="datetime-local"
           value={dateTime}
