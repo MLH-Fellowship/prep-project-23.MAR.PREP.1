@@ -64,17 +64,19 @@ function App() {
           {!isLoaded && <h2>Loading...</h2>}
           {isLoaded && results && (
             <>
-              {results.list.map(item => {
-                if (item.dt_txt === dateTime) {
-                  return (
-                    <div key={item.dt}>
-                      <h3>{item.weather[0].main}</h3>
-                      <p>Feels like {item.main.feels_like}°C</p>
-                      <i><p>{results.city.name}, {results.city.country}</p></i>
-                    </div>
-                  );
-                }
-              })}
+                {results.list.map(item => {
+                  if (item.dt_txt === dateTime) {
+                    return (
+                      <div key={item.dt}>
+                        <h3>{item.weather[0].main}</h3>
+                        <p>Feels like {item.main.feels_like}°C</p>
+                        <i><p>{results.city.name}, {results.city.country}</p></i>
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
             </>
           )}
           {isLoaded && !results && (
