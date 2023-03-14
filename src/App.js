@@ -62,7 +62,7 @@ function App() {
         />
         <div className="Results">
           {!isLoaded && <h2>Loading...</h2>}
-          {isLoaded && results && (
+          {isLoaded && results && results.list && (
             <>
                 {results.list.map(item => {
                   if (item.dt_txt === dateTime) {
