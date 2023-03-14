@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
-    setMinTimestamp(new Date().toISOString());
+    setMinTimestamp(new Date().toISOString().slice(0, 16));
 
     // get the last timestamp available (maxTimestamp) from the forecast endpoint
     fetch(
