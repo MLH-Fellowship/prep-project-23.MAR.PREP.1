@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import './App.css';
 import logo from './mlh-prep.png'
 
+import CitySearchBar from "./components/SearchBar";
+
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,10 +36,7 @@ function App() {
       <img className="logo" src={logo} alt="MLH Prep Logo"></img>
       <div>
         <h2>Enter a city below 👇</h2>
-        <input
-          type="text"
-          value={city}
-          onChange={event => setCity(event.target.value)} />
+        <CitySearchBar setCity={setCity}/>
         <div className="Results">
           {!isLoaded && <h2>Loading...</h2>}
           {console.log(results)}
