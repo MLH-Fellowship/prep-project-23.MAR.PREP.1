@@ -67,7 +67,6 @@ function App() {
         .then((res) => res.json())
         .then(
           (result) => {
-            console.log(result);
             if (result["cod"] !== 200) {
               setIsLoaded(false);
             } else {
