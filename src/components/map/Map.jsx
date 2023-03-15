@@ -15,8 +15,8 @@ function Map() {
         <div>
             <MapContainer center={position} zoom={13} scrollWheelZoom={false}
                 style={{
-                    height: "100%",
-                    width: "100%",
+                    height: "90vh",
+                    width: "60vw",
                     borderRadius: "1rem",
                     minHeight: "300px",
 
