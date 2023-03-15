@@ -8,32 +8,85 @@ function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("New York City");
+  const [dateTime, setDateTime] = useState("");
+  const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
+  const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
 
   useEffect(() => {
+    // make sure current time (minTimestamp) is up to date
+    setMinTimestamp(new Date().toISOString().slice(0, 16));
+
+    // get the last timestamp available (maxTimestamp) from the forecast endpoint
     fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-        city +
-        "&units=metric" +
-        "&appid=" +
-        process.env.REACT_APP_APIKEY
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&dt=${dateTime}&appid=${process.env.REACT_APP_APIKEY}`
     )
       .then((res) => res.json())
-      .then(
-        (result) => {
-          if (result["cod"] !== 200) {
-            setIsLoaded(false);
-          } else {
-            setIsLoaded(true);
-            setResults(result);
-          }
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
+      .then((result) => {
+        if (result.cod === "200") {
+          setMaxTimestamp(result.list.slice(-1)[0].dt_txt);
         }
-      );
-  }, [city]);
+      });
+
+    // if a date/time was chosen, get forecast data for chosen time and update results state
+    function getChosenForecast(forecastArr) {
+      let i = 0;
+      const chosenTimestamp = new Date(dateTime);
+      while (
+        i < forecastArr.length &&
+        chosenTimestamp.getTime() > new Date(forecastArr[i].dt_txt).getTime()
+      ) {
+        i++;
+      }
+      return forecastArr[i];
+    }
+    if (dateTime !== "") {
+      fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result.cod !== "200") {
+              setIsLoaded(false);
+            } else {
+              const chosenForecast = getChosenForecast(result.list);
+              Object.assign(chosenForecast, result.city); // update chosenForecast object to include needed city info
+              chosenForecast.sys.country = result.city.country;
+              setResults(chosenForecast);
+              setIsLoaded(true);
+            }
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    } else {
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result["cod"] !== 200) {
+              setIsLoaded(false);
+            } else {
+              setResults(result);
+              setIsLoaded(true);
+            }
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }
+  }, [city, dateTime]);
+
+  const currentTimeFormat = `${minTimestamp.split("T")[0]} ${
+    minTimestamp.split("T")[1].split(".")[0]
+  }`;
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -46,6 +99,14 @@ function App() {
           <div className="input-container">
             <Autocomplete setCity={setCity} />
           </div>
+          <h2>Select a date and time </h2>
+          <input
+            type="datetime-local"
+            value={dateTime}
+            min={currentTimeFormat}
+            max={maxTimestamp}
+            onChange={(event) => setDateTime(event.target.value)}
+          />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
             {isLoaded && results && (
@@ -58,6 +119,11 @@ function App() {
                   </p>
                 </i>
               </>
+            )}
+            {isLoaded && !results && (
+              <h2>
+                No results found for {city} at {dateTime}
+              </h2>
             )}
           </div>
         </div>
