@@ -18,6 +18,13 @@ body {
   justify-content: center;
 }
 
+.search-bar-container {
+  width: 400px;
+	margin: 0;
+  font-size: 5.5rem;
+	z-index: 999;
+}
+
 .Results {
   background-color: white;
   margin-left: 150px;

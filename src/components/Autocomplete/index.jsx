@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import { useFetch } from '../../hooks/useFetch';
 
-const Autocomplete = ({ setCity, }) => {
+const Autocomplete = ({ setCity }) => {
 	const [locations, setLocations] = useState([]);
 
 	const [{ data }, fetchData] = useFetch();
@@ -29,23 +29,16 @@ const Autocomplete = ({ setCity, }) => {
 	};
 
 	const handleSelect = (label) => {
-		let city = label.name.split(',')[0];
+		const city = label.name.split(',')[0];
 		setCity(city);
 	};
-
-	const searchBarStyling = {
-		width: 400,
-		margin: '0',
-		fontSize: '5.5rem',
-		zIndex: 999,
-	};
-
+  
   const inputStyling = {
     borderRadius: '4px',
   }
 
 	return (
-		<div style={searchBarStyling}>
+		<div className="search-bar-container" >
 			<ReactSearchAutocomplete
 				items={locations}
 				onSearch={(city) => {
