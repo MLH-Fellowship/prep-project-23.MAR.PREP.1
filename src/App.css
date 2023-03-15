@@ -12,11 +12,10 @@ body {
   margin-top: 20px;
 }
 
-input {
+.input-container {
   padding: 10px;
-  border-radius: 4px;
-  border: 10px;
-  width: 200px
+  display: flex;
+  justify-content: center;
 }
 
 .Results {
