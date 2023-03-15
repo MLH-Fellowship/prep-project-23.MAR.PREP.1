@@ -14,14 +14,16 @@ const DefaultIcon = leaflet.icon({
 
 leaflet.Marker.prototype.options.icon = DefaultIcon;
 
-function LocationMarker() {
+function LocationMarker({ handleCityChange }) {
     const [position, setPosition] = useState(null);
     const map = useMapEvent("click", async (e) => {
 
         let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${e.latlng.lat}&lon=${e.latlng.lng}&appid=${process.env.REACT_APP_APIKEY}`)
 
-        let city = await res.json()
-        console.log("MAP data: ", city);
+        res = await res.json()
+        console.log("res: ", res)
+
+        handleCityChange(res.name);
 
         setPosition(e.latlng);
         map.flyTo(e.latlng, map.getZoom());

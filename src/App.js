@@ -34,8 +34,9 @@ function App() {
       );
   }, [city]);
 
-  const handleCityChange = (event) => {
-    setCity(event.target.value);
+  const handleCityChange = (city) => {
+    console.log("City changed to " + city);
+    setCity(city);
   };
 
   if (error) {
@@ -46,7 +47,11 @@ function App() {
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
           <h2>Enter a city below 👇</h2>
-          <input type="text" value={city} onChange={handleCityChange} />
+          <input
+            type="text"
+            value={city}
+            onChange={(event) => handleCityChange(event.target.value)}
+          />
           <Map handleCityChange={handleCityChange} />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
