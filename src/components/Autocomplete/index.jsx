@@ -9,7 +9,7 @@ const Autocomplete = ({ setCity, }) => {
 
 	const fetchAutocompleteResults = (city) => {
 		if (city) {
-			fetchData(`https://autocomplete.search.hereapi.com/v1/autocomplete?q=${city}&limit=4&types=city&apiKey=${process.env.REACT_APP_HERE_APIKEY ?? "qzkvZ4js7O3nkPGhWfuB-yafLEPBq_WKDQxCekeuW44"}`);
+			fetchData(`https://autocomplete.search.hereapi.com/v1/autocomplete?q=${city}&limit=4&types=city&apiKey=${process.env.REACT_APP_HERE_APIKEY}`);
 		}
 	};
 
