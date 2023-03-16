@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./mlh-prep.png";
+import {getCurrentLocation} from "./components/Geolocation"
 
 function App() {
   const [error, setError] = useState(null);
@@ -12,6 +13,9 @@ function App() {
   const [results, setResults] = useState(null);
 
   useEffect(() => {
+    
+    getCurrentLocation(setIsLoaded, setResults, setCity, setError);
+
     // make sure current time (minTimestamp) is up to date
     setMinTimestamp(new Date().toISOString().slice(0, 16));
 
