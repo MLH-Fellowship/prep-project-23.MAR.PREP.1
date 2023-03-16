@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./mlh-prep.png";
-import {getCurrentLocation} from "./components/Geolocation"
 
 function App() {
   const [error, setError] = useState(null);
@@ -13,9 +12,6 @@ function App() {
   const [results, setResults] = useState(null);
 
   useEffect(() => {
-    
-    getCurrentLocation(setIsLoaded, setResults, setCity, setError);
-
     // make sure current time (minTimestamp) is up to date
     setMinTimestamp(new Date().toISOString().slice(0, 16));
 
@@ -85,6 +81,33 @@ function App() {
         );
     }
   }, [city, dateTime]);
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      console.log("Geolocation is not supported by your browser")
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        function(position){
+          const {latitude, longitude} = position.coords;
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
+            .then(res => res.json())
+            .then(
+              (result) => {
+                setIsLoaded(true);
+                setResults(result);
+                setCity(result.name);
+              })
+            .catch((error) => {
+                setIsLoaded(true);
+                setError(error);
+              })
+        },
+        function(error) {
+          console.error(`Error: ${error.message}`);
+        }
+      )   
+    }
+  }, [])
 
   const currentTimeFormat = `${minTimestamp.split("T")[0]} ${
     minTimestamp.split("T")[1].split(".")[0]
