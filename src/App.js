@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./mlh-prep.png";
 
+import Autocomplete from "./components/Autocomplete";
+
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -94,11 +96,9 @@ function App() {
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
           <h2>Enter a city below 👇</h2>
-          <input
-            type="text"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
+          <div className="input-container">
+            <Autocomplete setCity={setCity} />
+          </div>
           <h2>Select a date and time </h2>
           <input
             type="datetime-local"
