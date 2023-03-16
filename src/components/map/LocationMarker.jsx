@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Marker, Popup, useMapEvent } from "react-leaflet";
 import leaflet from "leaflet";
 
@@ -14,24 +14,31 @@ const DefaultIcon = leaflet.icon({
 
 leaflet.Marker.prototype.options.icon = DefaultIcon;
 
-function LocationMarker({ handleCityChange }) {
-    const [position, setPosition] = useState(null);
+function LocationMarker({ cityname, pos, handleCityChange }) {
+    const [position, setPosition] = useState(pos);
+    const [city, setCity] = useState("");
     const map = useMapEvent("click", async (e) => {
 
         let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${e.latlng.lat}&lon=${e.latlng.lng}&appid=${process.env.REACT_APP_APIKEY}`)
 
         res = await res.json()
-        console.log("res: ", res)
 
         handleCityChange(res.name);
+        setCity(res.name);
 
         setPosition(e.latlng);
         map.flyTo(e.latlng, map.getZoom());
     });
 
+    useEffect(() => {
+        setPosition(pos);
+        setCity(cityname)
+        map.flyTo(pos, map.getZoom());
+    }, [pos]);
+
     return position === null ? null : (
         <Marker position={position}>
-            <Popup>You are here</Popup>
+            <Popup>You are at {city}</Popup>
         </Marker>
     );
 }
