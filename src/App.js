@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./mlh-prep.png";
-
+import Bookmarks from "./components/Autocomplete/Bookmarks";
 import Autocomplete from "./components/Autocomplete";
 
 function App() {
@@ -125,6 +125,7 @@ function App() {
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
             <Autocomplete setCity={setCity} />
+            {results && <Bookmarks results={results}/>}
           </div>
           <h2>Select a date and time </h2>
           <input
