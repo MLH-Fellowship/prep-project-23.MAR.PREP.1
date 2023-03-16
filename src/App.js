@@ -35,7 +35,6 @@ function App() {
   }, [city]);
 
   const handleCityChange = (city) => {
-    console.log("City changed to " + city);
     setCity(city);
   };
 
