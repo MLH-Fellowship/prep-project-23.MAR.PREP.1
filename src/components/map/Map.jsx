@@ -13,7 +13,7 @@ function Map({ city, handleCityChange }) {
 
   const getLocation = async (city) => {
     let locationData = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`
     );
 
     locationData = await locationData.json();
