@@ -83,7 +83,7 @@ function App() {
         );
     }
   }, [city, dateTime]);
-
+  
   useEffect(() => {
     if (!navigator.geolocation) {
       console.log("Geolocation is not supported by your browser")
