@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./mlh-prep.png";
 
+import Autocomplete from "./components/Autocomplete";
+
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -10,33 +12,6 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
-
-  useEffect(() => {
-    if (!navigator.geolocation) {
-      console.log("Geolocation is not supported by your browser")
-    } else {
-      navigator.geolocation.getCurrentPosition(
-        function(position){
-          const {latitude, longitude} = position.coords;
-          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
-            .then(res => res.json())
-            .then(
-              (result) => {
-                setIsLoaded(true);
-                setResults(result);
-                setCity(result.name);
-              })
-            .catch((error) => {
-                setIsLoaded(true);
-                setError(error);
-              })
-        },
-        function(error) {
-          console.error(`Error: ${error.message}`);
-        }
-      )   
-    }
-  }, [])
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -108,6 +83,33 @@ function App() {
         );
     }
   }, [city, dateTime]);
+  
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      console.log("Geolocation is not supported by your browser")
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        function(position){
+          const {latitude, longitude} = position.coords;
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
+            .then(res => res.json())
+            .then(
+              (result) => {
+                setIsLoaded(true);
+                setResults(result);
+                setCity(result.name);
+              })
+            .catch((error) => {
+                setIsLoaded(true);
+                setError(error);
+              })
+        },
+        function(error) {
+          console.error(`Error: ${error.message}`);
+        }
+      )   
+    }
+  }, [])
 
   const currentTimeFormat = `${minTimestamp.split("T")[0]} ${
     minTimestamp.split("T")[1].split(".")[0]
@@ -121,11 +123,9 @@ function App() {
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
           <h2>Enter a city below 👇</h2>
-          <input
-            type="text"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
+          <div className="input-container">
+            <Autocomplete setCity={setCity} />
+          </div>
           <h2>Select a date and time </h2>
           <input
             type="datetime-local"
