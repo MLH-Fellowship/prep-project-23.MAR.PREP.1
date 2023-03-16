@@ -34,6 +34,7 @@ function Map({ city, handleCityChange }) {
       style={{
         display: "flex",
         justifyContent: "center",
+        paddingTop: "10px",
       }}
     >
       <MapContainer
