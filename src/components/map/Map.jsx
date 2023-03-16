@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 
 import {
     MapContainer,
@@ -7,8 +7,22 @@ import {
 import "leaflet/dist/leaflet.css";
 import LocationMarker from "./LocationMarker";
 
-function Map({ handleCityChange }) {
-    const position = [51.505, -0.09]
+function Map({ city, handleCityChange }) {
+    const position = [51.505, -0.09];
+
+    const getLocation = async (city) => {
+        let locationData = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`);
+        locationData = await locationData.json();
+        console.log("The locationData is: ", locationData);
+        const lat = locationData.coord.lat;
+        const lon = locationData.coord.lon;
+        console.log("lat = ", lat);
+        console.log("lon = ", lon);
+    }
+
+    useEffect(() => {
+        getLocation(city);
+      }, [city]);
 
     return (
         <div>

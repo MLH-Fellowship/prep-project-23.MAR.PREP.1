@@ -52,7 +52,7 @@ function App() {
             value={city}
             onChange={(event) => handleCityChange(event.target.value)}
           />
-          <Map handleCityChange={handleCityChange} />
+          <Map city={city} handleCityChange={handleCityChange} />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
             {console.log(results)}
