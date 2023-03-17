@@ -21,7 +21,7 @@ const SavedPlaceCard = ({ city }) => {
       <h2>{city.name}</h2>
       {weather ? (
         <>
-          <div className="Results__card__weather">
+          <div className="Results__card__weather animate__animated animate__fadeIn">
             <img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt={weather.weather[0].description} />
             <p>{weather.weather[0].description}</p>
           </div>

@@ -48,7 +48,12 @@ body {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 10px;
+  transition: transform 0.2s ease-in-out;
   width: 300px;
+}
+
+.Results__card:hover {
+  transform: scale(1.05);
 }
 
 .Results__card h2 {
