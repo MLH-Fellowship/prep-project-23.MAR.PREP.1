@@ -8,7 +8,6 @@ const SavedPlaces = ({display}) => {
     const [confirmed, setConfirmed] = useState(false)
     const [cities, setCities] = useState([]);
     
-
     // once clicked it will display the modal
     const openModal = () => {
         setIsOpen(true)
@@ -33,18 +32,13 @@ const SavedPlaces = ({display}) => {
           bottom: 'auto',
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
-          width: '60vw',
-          height:'60vh',
-          zIndex:"999",
+          width: 'clamp(60vw,300px, 90% )',
+          height:'min(60vh, 600px)',
+          borderRadius: '20px',
           color:"black",
       },
   };
 
-  const buttonStyles ={
-    
-    " color":'pink',
-    
-  }
 
 
   const handleRemove = () =>{
@@ -61,18 +55,46 @@ const SavedPlaces = ({display}) => {
 
   return (
     <>
-      <button onClick={openModal} style={buttonStyles} >Saved Locations</button>
+      <button onClick={openModal} style={{
+        display: "inline-block",
+        borderRadius: "4px",
+        backgroundColor: "white",
+        border: "none",
+        color: "black",
+        textAlign: "center",
+        fontSize: "1rem",
+        padding: "15px",
+        width: "clam(6%,10px,20%)",
+        transition: "all 0.5s",
+        cursor: "pointer",
+        
+      }}>Saved Locations</button>
       <Modal 
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel="View bookmarked cities"
-      
-      >
-          {cities.map((city) => (
-            <SavedPlaceCard key={city.name} city={city} />
-          ))}
-          <button onClick={() => handleRemove()}>clear Bookmarks</button>        
+      >          
+        <h1>Saved Locations</h1>
+        
+        <button style={{
+        background: "none",
+        border: "none",
+        textDecoration: "underline",
+        color: "#000",
+        cursor: "pointer"}}
+        onClick={() => handleRemove()}>Clear Bookmarks</button>        
+        {
+          cities.length === 0?
+          <h2 style={{
+            paddingTop:'15%'
+
+          }}>No Saved Locations</h2>
+          :
+          cities.map((city) => (
+          <SavedPlaceCard key={city.name} city={city} />
+        ))
+        }
       </Modal>
     </>
   );    
