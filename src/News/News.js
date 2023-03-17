@@ -8,8 +8,8 @@ const News = () => {
   useEffect(() => {
     const fetchNews = async () => {
       const response = await axios.get(
-        "https://newsapi.org/v2/top-headlines?country=us&apiKey=332b16b9fc294c70a8b09a13a2b8d736"
-      );
+        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_NEWS_APIKEY}`
+      )
       setArticles(response.data.articles);
     };
     fetchNews();
