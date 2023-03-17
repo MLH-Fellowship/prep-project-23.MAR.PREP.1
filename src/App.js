@@ -95,9 +95,9 @@ function App() {
   } else {
     return (
       <>
-      <div>
+      <div className="header">
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-        <button onClick={() => setShowNews(!showNews)}>{!showNews ? "Show Top Headlines": "Hide Top Headlines"}</button>
+        <button className="top-headlines-button" onClick={() => setShowNews(!showNews)}>{!showNews ? "Show Top Headlines": "Hide Top Headlines"}</button>
       </div>
        {showNews && <News /> }
         <div>
