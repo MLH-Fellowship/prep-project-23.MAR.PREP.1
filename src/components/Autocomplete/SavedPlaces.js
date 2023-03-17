@@ -59,6 +59,8 @@ const SavedPlaces = ({display}) => {
     }
   }, []);
 
+  
+
   return (
     <>
       <button onClick={openModal} style={buttonStyles} >Saved Locations</button>

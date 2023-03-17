@@ -14,6 +14,7 @@ function App() {
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
   const [showBookmarks, setShowBookmarks] = useState(false);
+  const [triggerPopup, setTriggerPopup] = useState(false);
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -126,14 +127,14 @@ function App() {
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
-            {!showBookmarks && <Autocomplete setCity={setCity} />}
+            {!showBookmarks && <Autocomplete setCity={setCity} /> }
             {/* <Autocomplete setCity={setCity}/> */}
             {results && <Bookmarks results={results}/>}
           </div>
           <div>
           {/* <button onClick={() => setShowBookmarks(!showBookmarks)}>Saved Locations</button> */}
           {/* {showBookmarks && <SavedPlaces display={setShowBookmarks}/>} */}
-          <SavedPlaces display={setShowBookmarks} />
+          <SavedPlaces display={setShowBookmarks} triggerPopup={triggerPopup}/>
           </div>
           <h2>Select a date and time </h2>
           <input
