@@ -3,6 +3,7 @@ import "./App.css";
 import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import Autocomplete from "./components/Autocomplete";
+import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 
 function App() {
   const [error, setError] = useState(null);
@@ -12,6 +13,7 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+  const [showBookmarks, setShowBookmarks] = useState(false);
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -124,8 +126,14 @@ function App() {
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
-            <Autocomplete setCity={setCity} />
+            {!showBookmarks && <Autocomplete setCity={setCity} />}
+            {/* <Autocomplete setCity={setCity}/> */}
             {results && <Bookmarks results={results}/>}
+          </div>
+          <div>
+          {/* <button onClick={() => setShowBookmarks(!showBookmarks)}>Saved Locations</button> */}
+          {/* {showBookmarks && <SavedPlaces display={setShowBookmarks}/>} */}
+          <SavedPlaces display={setShowBookmarks} />
           </div>
           <h2>Select a date and time </h2>
           <input
