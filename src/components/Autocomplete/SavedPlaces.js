@@ -3,16 +3,18 @@ import SavedPlaceCard from "./SavedPlaceCard";
 import Modal from "react-modal";
 
 
-const SavedPlaces = ({display}) => {
+const SavedPlaces = ({display, setUpdateIcon}) => {
     const [modalIsOpen, setIsOpen] = useState(false)
     const [confirmed, setConfirmed] = useState(false)
+    // cities useState is being used to store the bookmarked cities from the localStorage
     const [cities, setCities] = useState([]);
+    const [loadStorage, setLoadStorage] = useState(false)
     
     // once clicked it will display the modal
     const openModal = () => {
         setIsOpen(true)
         display(true)
-
+        setLoadStorage(prevloadStorage => !prevloadStorage)
     }
 
     // if clicked the modal will be closed 
@@ -40,18 +42,23 @@ const SavedPlaces = ({display}) => {
   };
 
 
-
+  // this will clear the localStorage and make sure 
   const handleRemove = () =>{
     localStorage.clear()
-    // setDeleteBookmark(prevDeleteBookmark => !prevDeleteBookmark)
+    setLoadStorage(prevloadStorage => !prevloadStorage)
+    setCities([])
+    closeModal()
+    setUpdateIcon(prevupdateIcon => !prevupdateIcon)
+    
   }
+  // if the localStorage is updating then this useEffect will update the cities useState 
   useEffect(() => {
     const getArrayCities = localStorage.getItem("cities");
     if (getArrayCities) {
       const addCitiesInArray = JSON.parse(getArrayCities);
       setCities(addCitiesInArray);
     }
-  }, []);
+  }, [loadStorage]);
 
   return (
     <>
