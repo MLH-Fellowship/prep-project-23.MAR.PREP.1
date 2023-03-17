@@ -86,13 +86,15 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
       >          
         <h1>Saved Locations</h1>
         
+        { cities.length > 0 &&
         <button style={{
         background: "none",
         border: "none",
         textDecoration: "underline",
         color: "#000",
         cursor: "pointer"}}
-        onClick={() => handleRemove()}>Clear Bookmarks</button>        
+        onClick={() => handleRemove()}>Clear Bookmarks</button> 
+        }       
         {
           cities.length === 0?
           <h2 style={{
