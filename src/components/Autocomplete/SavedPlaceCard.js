@@ -25,7 +25,25 @@ const SavedPlaceCard = ({ city }) => {
             <img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt={weather.weather[0].description} />
             <p>{weather.weather[0].description}</p>
           </div>
-          <p>{Math.round(weather.main.temp)}°C</p>
+          <div style={{ display: 'table', border: '2px dashed blue', borderRadius: '5px', padding: '10px' }}>
+  <div style={{ display: 'table-row' }}>
+    <div style={{ display: 'table-cell', fontWeight: 'bold' }}>Temperature:</div>
+    <div style={{ display: 'table-cell' }}>{Math.round(weather.main.temp)}°C</div>
+  </div>
+  <div style={{ display: 'table-row' }}>
+    <div style={{ display: 'table-cell', fontWeight: 'bold' }}>Humidity:</div>
+    <div style={{ display: 'table-cell' }}>{weather.main.humidity}%</div>
+  </div>
+  <div style={{ display: 'table-row' }}>
+    <div style={{ display: 'table-cell', fontWeight: 'bold' }}>Wind Speed:</div>
+    <div style={{ display: 'table-cell' }}>{weather.wind.speed} m/s</div>
+  </div>
+  <div style={{ display: 'table-row' }}>
+    <div style={{ display: 'table-cell', fontWeight: 'bold' }}>Pressure:</div>
+    <div style={{ display: 'table-cell' }}>{weather.main.pressure} hPa</div>
+  </div>
+</div>
+
         </>
       ) : (
         <p>Loading weather...</p>
