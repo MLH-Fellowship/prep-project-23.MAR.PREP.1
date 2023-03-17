@@ -1,7 +1,7 @@
 body {
-    background-color: #133667;
-    color: white;
-    text-align: center;
+  background-color: #133667;
+  color: white;
+  text-align: center;
 }
 
 .logo {
@@ -12,36 +12,39 @@ body {
   margin-top: 20px;
 }
 
-input {
+.input-container {
   padding: 10px;
-  border-radius: 4px;
-  border: 10px;
-  width: 200px
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar-container {
+  width: 400px;
+  margin: 0;
+  font-size: 5.5rem;
+  z-index: 999;
 }
 
 .Results {
   background-color: white;
-  margin-left: 150px;
-  margin-right: 150px;
-  margin-top: 20px;
+  margin: 20px auto;
   border-radius: 8px;
   color: black;
-  padding: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  padding: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 75%;
+  max-width: 400px;
 }
 
-.item-box{
+.item-box {
   transition: 500ms linear;
   width: 200px;
   height: 200px;
   border-radius: 50px;
   background: linear-gradient(315deg, #f0f0f0, #cacaca);
-  box-shadow:  -5px -5px 10px #081a32,
-               5px 5px 10px #081a32;
-
-
+  box-shadow: -5px -5px 10px #081a32, 5px 5px 10px #081a32;
 }
 
-.bag{
+.bag {
   translate: 60px -40px;
 }
