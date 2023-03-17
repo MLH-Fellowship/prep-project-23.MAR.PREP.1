@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import News from './News/News.js';
 import logo from "./mlh-prep.png";
 
 import Autocomplete from "./components/Autocomplete";
@@ -127,6 +128,9 @@ function App() {
             )}
           </div>
         </div>
+        <div>
+        <News />
+       </div>
       </>
     );
   }
