@@ -126,12 +126,14 @@ function App() {
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
-            <Autocomplete setCity={setCity} />
+            {!showBookmarks && <Autocomplete setCity={setCity} />}
+            {/* <Autocomplete setCity={setCity}/> */}
             {results && <Bookmarks results={results}/>}
           </div>
           <div>
-          <button onClick={() => setShowBookmarks(!showBookmarks)}>Saved Locations</button>
-          {showBookmarks && <SavedPlaces />}
+          {/* <button onClick={() => setShowBookmarks(!showBookmarks)}>Saved Locations</button> */}
+          {/* {showBookmarks && <SavedPlaces display={setShowBookmarks}/>} */}
+          <SavedPlaces display={setShowBookmarks} />
           </div>
           <h2>Select a date and time </h2>
           <input
