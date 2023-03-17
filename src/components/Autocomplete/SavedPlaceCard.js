@@ -3,16 +3,16 @@ import axios from "axios";
 
 const SavedPlaceCard = ({ city }) => {
   const [weather, setWeather] = useState(null);
+  const fetchWeather = async () => {
+    const response = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+    );
+    setWeather(response.data);
+  };
 
   useEffect(() => {
-    const fetchWeather = async () => {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
-      );
-      setWeather(response.data);
-    };
     fetchWeather();
-  }, [city.name]);
+  }, []);
 
   return (
     <div className="Results__card">
