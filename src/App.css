@@ -30,3 +30,18 @@ input {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.item-box{
+  transition: 500ms linear;
+  width: 200px;
+  height: 200px;
+  border-radius: 50px;
+  background: linear-gradient(315deg, #f0f0f0, #cacaca);
+  box-shadow:  -5px -5px 10px #081a32,
+               5px 5px 10px #081a32;
+
+
+}
+
+.bag{
+  translate: 60px -40px;
+}

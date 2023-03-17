@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import './App.css';
 import logo from './mlh-prep.png'
+import Suggestion from "./components/Suggestion";
 
 function App() {
   const [error, setError] = useState(null);
@@ -8,13 +9,22 @@ function App() {
   const [city, setCity] = useState("New York City")
   const [results, setResults] = useState(null);
 
+  const [weatherType , setWeatherType] = useState("");
+
   useEffect(() => {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric" + "&appid=" + process.env.REACT_APP_APIKEY)
+    // eslint-disable-next-line no-useless-concat
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + 'burla' + "&units=metric" + "&appid=" + '71b52e36f8fd3004c954ae4904da8749')
       .then(res => res.json())
       .then(
         (result) => {
-          if (result['cod'] !== 200) {
+          
+          //  console.log("hello"+result["weather"][0].main)
+          if (result['cod'] === 200) {
             setIsLoaded(false)
+            setWeatherType(result['weather'][0].main)
+            
+            console.log(result['weather'][0].main+"j");
+            
           } else {
             setIsLoaded(true);
             setResults(result);
@@ -48,6 +58,7 @@ function App() {
           </>}
         </div>
       </div>
+      <Suggestion weatherType={weatherType} isLoaded={isLoaded}></Suggestion>
     </>
   }
 }
