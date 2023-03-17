@@ -60,6 +60,8 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
     }
   }, [loadStorage]);
 
+  
+
   return (
     <>
       <button onClick={openModal} style={{

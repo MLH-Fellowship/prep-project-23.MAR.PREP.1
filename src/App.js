@@ -15,6 +15,7 @@ function App() {
   const [results, setResults] = useState(null);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [updateIcon, setUpdateIcon] = useState(false)
+  
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
     setMinTimestamp(new Date().toISOString().slice(0, 16));
