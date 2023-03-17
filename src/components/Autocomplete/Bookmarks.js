@@ -3,9 +3,15 @@ import { useEffect, useState } from "react";
 
 
 
-const Bookmarks = ({results}) =>{
+const Bookmarks = ({results, updateIcon}) =>{
     const [fillbookmark, setFillbookmark] = useState(false)
-    
+
+    // updateIcon is updating when Clear Bookmarks button is clicked inside the modal
+    // the goal is for the bookmark icon to be outlined since it is no longer in the localStorage
+    useEffect(() =>{
+        setFillbookmark(prevFillbookmark => !prevFillbookmark)
+    }, [updateIcon])
+
     useEffect(() =>{
         // first set Fillbookmark to false and then find out if the city is in the localStorage
         setFillbookmark(false)

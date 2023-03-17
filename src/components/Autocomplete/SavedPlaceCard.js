@@ -3,6 +3,8 @@ import axios from "axios";
 
 const SavedPlaceCard = ({ city }) => {
   const [weather, setWeather] = useState(null);
+
+  // receiving each city from the localStorage and displaying the data on the modal
   const fetchWeather = async () => {
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
