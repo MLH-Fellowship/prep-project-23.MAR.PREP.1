@@ -13,6 +13,7 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+  const[showNews, setShowNews] = useState(false);
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -94,7 +95,11 @@ function App() {
   } else {
     return (
       <>
+      <div>
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+        <button onClick={() => setShowNews(!showNews)}>{!showNews ? "Show Top Headlines": "Hide Top Headlines"}</button>
+      </div>
+       {showNews && <News /> }
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
@@ -128,9 +133,6 @@ function App() {
             )}
           </div>
         </div>
-        <div>
-        <News />
-       </div>
       </>
     );
   }
