@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./mlh-prep.png";
-import Suggestion from "./components/Suggestion";
+import Suggestion from "./components/Suggestions/Suggestion";
 import Autocomplete from "./components/Autocomplete";
 
 function App() {
@@ -129,7 +129,12 @@ function App() {
             )}
           </div>
         </div>
-        <Suggestion weatherType={weatherType} isLoaded={isLoaded}></Suggestion>
+        <Suggestion
+          weatherType={
+            results?.weather[0]?.main ? results.weather[0].main : null
+          }
+          isLoaded={isLoaded}
+        ></Suggestion>
       </>
     );
   }
