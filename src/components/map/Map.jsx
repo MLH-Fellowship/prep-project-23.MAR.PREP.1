@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 import LocationMarker from "./LocationMarker";
 
 function Map({ city, handleCityChange }) {
-  const [position, setPosition] = useState([51.505, -0.09]);
+  const [position, setPosition] = useState(null);
 
   const handlePositionChange = (lat, lon) => {
     setPosition([lat, lon]);
@@ -38,7 +38,7 @@ function Map({ city, handleCityChange }) {
       }}
     >
       <MapContainer
-        center={position}
+        center={position ? position : [51.505, -0.09]}
         zoom={13}
         scrollWheelZoom={false}
         style={{
