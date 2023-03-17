@@ -16,15 +16,17 @@ function FoodRecommendation({ weatherCode }) {
     setRecommendedFoods(Array.from(randomRecommendations));
   }, [weatherCode]);
 
-  return (
-    <div className="recommended-foods">
-      <h3>Recommended Foods</h3>
-      <ul>
+return (
+    <>
+      <h2>Interesting foods to try based on the season</h2>
+      <div className="food-recommendation-container">
         {recommendedFoods.map((food, index) => (
-          <li key={index}>{food}</li>
+          <div className="food-box" key={index}>
+            <h4 className="food-name">{food}</h4>
+          </div>
         ))}
-      </ul>
-    </div>
+      </div>
+    </>
   );
 }
 
