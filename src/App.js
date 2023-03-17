@@ -3,6 +3,7 @@ import "./App.css";
 import logo from "./mlh-prep.png";
 
 import Autocomplete from "./components/Autocomplete";
+import FoodRecommendation from "./components/FoodRecommendation";
 
 function App() {
   const [error, setError] = useState(null);
@@ -126,9 +127,13 @@ function App() {
               </h2>
             )}
           </div>
+          <div className="FoodRecommendation">
+            {results && <FoodRecommendation weather={results.weather[0].main} />}
+          </div>
         </div>
       </>
     );
+
   }
 }
 
