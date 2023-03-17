@@ -21,7 +21,10 @@ const SavedPlaceCard = ({ city }) => {
       <h2>{city.name}</h2>
       {weather ? (
         <>
-          <p>{weather.weather[0].description}</p>
+          <div className="Results__card__weather">
+            <img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt={weather.weather[0].description} />
+            <p>{weather.weather[0].description}</p>
+          </div>
           <p>{Math.round(weather.main.temp)}°C</p>
         </>
       ) : (
