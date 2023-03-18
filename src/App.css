@@ -73,31 +73,20 @@ body {
   padding-right: 1rem;
 }
 
+.Results__card:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
 @media (max-width: 768px) {
   .Results__card {
     width: 90%;
   }
 }
-
-
-.weather-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-}
-
-.weather-grid-item {
-  border: 1px solid #ddd;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.weather-grid-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.weather-grid-value {
-  font-size: 16px;
+@media (min-width: 769px) {
+  .Results__card {
+    width: 40%;
+    max-width: 600px;
+  }
 }
