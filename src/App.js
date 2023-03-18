@@ -84,33 +84,34 @@ function App() {
         );
     }
   }, [city, dateTime]);
-  
+
   useEffect(() => {
     if (!navigator.geolocation) {
-      console.log("Geolocation is not supported by your browser")
+      console.log("Geolocation is not supported by your browser");
     } else {
       navigator.geolocation.getCurrentPosition(
-        function(position){
-          const {latitude, longitude} = position.coords;
-          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
-            .then(res => res.json())
-            .then(
-              (result) => {
-                setIsLoaded(true);
-                setResults(result);
-                setCity(result.name);
-              })
+        function (position) {
+          const { latitude, longitude } = position.coords;
+          fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+          )
+            .then((res) => res.json())
+            .then((result) => {
+              setIsLoaded(true);
+              setResults(result);
+              setCity(result.name);
+            })
             .catch((error) => {
-                setIsLoaded(true);
-                setError(error);
-              })
+              setIsLoaded(true);
+              setError(error);
+            });
         },
-        function(error) {
+        function (error) {
           console.error(`Error: ${error.message}`);
         }
-      )   
+      );
     }
-  }, [])
+  }, []);
 
   const currentTimeFormat = `${minTimestamp.split("T")[0]} ${
     minTimestamp.split("T")[1].split(".")[0]
@@ -155,12 +156,13 @@ function App() {
             )}
           </div>
           <div className="FoodRecommendation">
-            {results && <FoodRecommendation weather={results.weather[0].main} />}
+            {results && (
+              <FoodRecommendation weatherCode={results.weather[0].id} />
+            )}
           </div>
         </div>
       </>
     );
-
   }
 }
 
