@@ -4,7 +4,7 @@ import axios from "axios";
 
 const News = () => {
   const [articles, setArticles] = useState([]);
-
+  const [error, setError] = useState(null);
   useEffect(() => {
     let isComponentMounted = true;
     const fetchNews = async () => {
@@ -16,6 +16,7 @@ const News = () => {
           setArticles(response.data.articles);
         }
       }catch(error){
+        setError(error.response.data.message);
         console.error(error);
       }
     };
@@ -27,7 +28,7 @@ const News = () => {
   }, []);
 
   return (
-      articles.length > 0 &&
+      articles.length > 0 && !error ? (
     <div className="container">
       <h1 className="text-center my-5">Top Headlines</h1>
       {articles.map((article, index) => (
@@ -39,7 +40,10 @@ const News = () => {
         </div>
       ))}
     </div>
+      ) : (
+        error && <div className="error-box"><h1 className="error-text">{error}</h1></div> 
+      )
   );
 };
 
-export default News;
+export default News;

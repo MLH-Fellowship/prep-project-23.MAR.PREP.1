@@ -1,23 +1,37 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 24px;
-    padding: 16px;
-  }
-  
-  .card-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .card-text {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Add styling to the error message */
+
+.error-box{
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.error-text{
+  color: #880808;
+  font-size: 0.9rem;
+  padding: 0.4rem;
+}
