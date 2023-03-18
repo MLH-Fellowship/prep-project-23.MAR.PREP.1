@@ -3,6 +3,8 @@ import "./App.css";
 import logo from "./mlh-prep.png";
 
 import Autocomplete from "./components/Autocomplete";
+import Recommender from "./components/MusicRecommender/recommneder";
+// import Recommneder from "./components/MusicRecommender/recommneder";
 
 function App() {
   const [error, setError] = useState(null);
@@ -126,6 +128,7 @@ function App() {
               </h2>
             )}
           </div>
+          <Recommender setCity={setCity} />
         </div>
       </>
     );
