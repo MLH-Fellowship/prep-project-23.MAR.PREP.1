@@ -6,13 +6,24 @@ const News = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
+    let isComponentMounted = true;
     const fetchNews = async () => {
-      const response = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_NEWS_APIKEY}`
-      )
-      setArticles(response.data.articles);
+      try{
+        const response = await axios.get(
+          `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_NEWS_APIKEY}`
+        )
+        if(isComponentMounted){
+          setArticles(response.data.articles);
+        }
+      }catch(error){
+        console.error(error);
+      }
     };
     fetchNews();
+
+    return () => {
+      isComponentMounted = false;
+    }
   }, []);
 
   return (
