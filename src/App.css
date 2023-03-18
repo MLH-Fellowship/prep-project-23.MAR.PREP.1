@@ -25,6 +25,18 @@ body {
   font-size: 5.5rem;
 	z-index: 999;
 }
+
+.Results {
+  background-color: white;
+  margin: 20px auto;
+  border-radius: 8px;
+  color: black;
+  padding: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  width: 75%;
+  max-width: 400px;
+}
+
 .Results__card {
   background-color: white;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05),
@@ -36,7 +48,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: clamp(300px, 90%, 600px);
+  height: clamp(200px, 60%, 600px);
 }
+
 
 .Results__card h2 {
   margin: 0;
@@ -89,4 +104,10 @@ body {
     width: 40%;
     max-width: 600px;
   }
+}
+
+.ReactModal__Content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

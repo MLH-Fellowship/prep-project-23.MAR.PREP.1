@@ -38,6 +38,7 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
           height:'min(60vh, 600px)',
           borderRadius: '20px',
           color:"black",
+          
       },
   };
 
