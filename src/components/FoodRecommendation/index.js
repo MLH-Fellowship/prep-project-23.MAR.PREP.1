@@ -10,19 +10,21 @@ function FoodRecommendation({ weatherCode }) {
     //choose 5 random foods from category
     const randomRecommendations = new Set();
     while (randomRecommendations.size < 3) {
-      const randIdx = Math.floor(Math.random() * foodCategories[foodCategory].length);
+      const randIdx = Math.floor(
+        Math.random() * foodCategories[foodCategory].length
+      );
       randomRecommendations.add(foodCategories[foodCategory][randIdx]);
     }
     setRecommendedFoods(Array.from(randomRecommendations));
   }, [weatherCode]);
 
-return (
+  return (
     <>
-      <h2>Interesting foods to try based on the season</h2>
       <div className="food-recommendation-container">
+        <h2>Perfect food for this weather!</h2>
         {recommendedFoods.map((food, index) => (
           <div className="food-box" key={index}>
-            <h4 className="food-name">{food}</h4>
+            <h2 className="food-name">{food}</h2>
           </div>
         ))}
       </div>
