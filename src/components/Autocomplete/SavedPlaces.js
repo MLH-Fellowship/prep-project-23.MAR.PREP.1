@@ -3,6 +3,7 @@ import SavedPlaceCard from "./SavedPlaceCard";
 import Modal from "react-modal";
 
 
+
 const SavedPlaces = ({display, setUpdateIcon}) => {
     const [modalIsOpen, setIsOpen] = useState(false)
     const [confirmed, setConfirmed] = useState(false)
@@ -10,6 +11,8 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
     const [cities, setCities] = useState([]);
     const [loadStorage, setLoadStorage] = useState(false)
     
+
+
     // once clicked it will display the modal
     const openModal = () => {
         setIsOpen(true)
@@ -34,6 +37,7 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
           bottom: 'auto',
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
+
           width: 'clamp(60vw,300px, 90% )',
           height:'min(60vh, 600px)',
           borderRadius: '20px',
@@ -43,7 +47,7 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
   };
 
 
-  // this will clear the localStorage and make sure 
+  // this will clear the localStorage and make sure cities useState is empty
   const handleRemove = () =>{
     localStorage.clear()
     setLoadStorage(prevloadStorage => !prevloadStorage)
@@ -53,18 +57,22 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
     
   }
   // if the localStorage is updating then this useEffect will update the cities useState 
+
   useEffect(() => {
     const getArrayCities = localStorage.getItem("cities");
     if (getArrayCities) {
       const addCitiesInArray = JSON.parse(getArrayCities);
       setCities(addCitiesInArray);
     }
+
   }, [loadStorage]);
+
 
   
 
   return (
     <>
+
       <button onClick={openModal} style={{
         display: "inline-block",
         borderRadius: "4px",
@@ -76,9 +84,9 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
         padding: "15px",
         width: "clam(6%,10px,20%)",
         transition: "all 0.5s",
-        cursor: "pointer",
-        
+        cursor: "pointer",       
       }}>Saved Locations</button>
+
       <Modal 
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
