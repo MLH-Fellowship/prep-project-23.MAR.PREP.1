@@ -14,6 +14,7 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+  const [weather, setWeather] = useState('')
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -55,6 +56,7 @@ function App() {
               const chosenForecast = getChosenForecast(result.list);
               Object.assign(chosenForecast, result.city); // update chosenForecast object to include needed city info
               chosenForecast.sys.country = result.city.country;
+              // console.log(chosenForecast);
               setResults(chosenForecast);
               setIsLoaded(true);
             }
@@ -74,6 +76,8 @@ function App() {
             if (result["cod"] !== 200) {
               setIsLoaded(false);
             } else {
+              console.log(result.weather[0].main);
+              setWeather(result.weather[0].main);
               setResults(result);
               setIsLoaded(true);
             }
@@ -86,6 +90,7 @@ function App() {
     }
   }, [city, dateTime]);
   
+  // getting user's location
   useEffect(() => {
     if (!navigator.geolocation) {
       console.log("Geolocation is not supported by your browser")
@@ -155,7 +160,7 @@ function App() {
               </h2>
             )}
           </div>
-          <Recommender setCity={setCity} />
+          <Recommender city={city} weather={weather} />
         </div>
       </>
     );
