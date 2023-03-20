@@ -12,7 +12,7 @@ function ChatBot() {
         });
     }, []);
     return (
-        <div>ChatBot</div>
+        <></>
     )
 }
 
