@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 
-export default function VoiceButton() {
+function VoiceButton() {
   // Adding the Alan button
   useEffect(() => {
     alanBtn({
@@ -13,4 +13,8 @@ export default function VoiceButton() {
       },
     });
   }, []);
+
+  return <div></div>;
 }
+
+export default VoiceButton;
