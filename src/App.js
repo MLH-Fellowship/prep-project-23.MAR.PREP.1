@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
-import { VoiceButton } from "./components/alan-ai/VoiceButton";
+import VoiceButton from "./components/alan-ai/VoiceButton";
 
 import Autocomplete from "./components/Autocomplete";
 
