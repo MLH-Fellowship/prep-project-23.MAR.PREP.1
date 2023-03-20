@@ -34,6 +34,7 @@ function LocationMarker({
   });
 
   useEffect(() => {
+    if (position === null) return;
     map.flyTo(position, map.getZoom());
   }, [position]);
 

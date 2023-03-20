@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 import LocationMarker from "./LocationMarker";
 
 function Map({ city, handleCityChange }) {
-  const [position, setPosition] = useState([51.505, -0.09]);
+  const [position, setPosition] = useState(null);
 
   const handlePositionChange = (lat, lon) => {
     setPosition([lat, lon]);
@@ -13,7 +13,7 @@ function Map({ city, handleCityChange }) {
 
   const getLocation = async (city) => {
     let locationData = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`
     );
 
     locationData = await locationData.json();
@@ -34,10 +34,11 @@ function Map({ city, handleCityChange }) {
       style={{
         display: "flex",
         justifyContent: "center",
+        paddingTop: "10px",
       }}
     >
       <MapContainer
-        center={position}
+        center={position ? position : [51.505, -0.09]}
         zoom={13}
         scrollWheelZoom={false}
         style={{
