@@ -8,15 +8,16 @@
   overflow: hidden;
   position: relative;
   /* margin: 40px 0; */
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
   /* border: 1px solid red; */
 }
 
 .hero-img {
-  background-position: center center;
+  background-position: center;
   background-size: cover;
   width: 580px;
   height: 100%;
+  border: 1px solid red;
   aspect-ratio: 1/1;
   position: absolute;
   z-index: 1;
@@ -79,7 +80,6 @@ h1 span:last-of-type {
 }
 
 .emblem-container {
-  --emblem-size: 280px;
   height: 280px;
   width: 280px;
   position: absolute;
@@ -121,4 +121,17 @@ h1 span:last-of-type {
   transform-origin: center center;
   width: 20px;
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.spotify-widget {
+	width: 580px;
+	z-index: 100;
+    margin: 0 auto;
+	margin-bottom: 8px;
+}
+
+.spotify-widget iframe {
+    border-radius: 12px;
+    width: 580px;
 }

@@ -7,6 +7,8 @@ import "./recommender.css";
 const Recommender = ({ city, weather }) => {
   const [songs, setSongs] = useState([]);
 
+  const [currentSong, setCurrentSong] = useState(0)
+
   const clientId = "fa8c44b84bf34a6d9f7a16dfd6a5b740";
   const clientSecret = "17f6323c3cac4b218aa9040cdc0f194e";
 
@@ -43,12 +45,13 @@ const Recommender = ({ city, weather }) => {
       },
     });
 
-    // console.log(response.data.tracks);
+    console.log(response.data.tracks);
 
     const tracks = response.data.tracks;
 
-    tracks.forEach((track) => {
+    tracks.forEach((track,key) => {
       const trackObj = {
+        num: key,
         albumId: track.album.id,
         artist: track.artists[0].name,
         albumName: track.album.name,
@@ -62,6 +65,15 @@ const Recommender = ({ city, weather }) => {
     getRecommendations();
   }, []);
 
+  useEffect(() => {
+    console.log(songs);
+  }, [songs])
+
+  const nexthandler = () => {
+    setCurrentSong(currentSong => currentSong + 1)
+  }
+  
+
   return (
     <div>
       <h2>Recommended Songs</h2>
@@ -69,20 +81,20 @@ const Recommender = ({ city, weather }) => {
         <>
           <div className="recommendations">
             <div className="hero-img">
-              <img src={songs[0].coverImg} alt="" />
+              <img src={songs[currentSong].coverImg} alt="" />
             </div>
             <div className="emblem-container">
               <div className="emblem text"></div>
             </div>
             <h1 className="text" value="6">
-              <span className="album-num"></span>
+              <span className="album-num">{songs[currentSong].key}</span>
               <span className="album-title"></span>
               <span>{songs[0].artist}</span>
             </h1>
           </div>
-          <div className="music-player">
+          <div className="spotify-widget">
             <iframe
-              src={`https://open.spotify.com/embed/album/${songs[0].albumId}?utm_source=generator`}
+              src={`https://open.spotify.com/embed/album/${songs[currentSong].albumId}?utm_source=generator`}
               width="100%"
               height="80"
               frameborder="0"
@@ -90,6 +102,7 @@ const Recommender = ({ city, weather }) => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
             ></iframe>
+            <button onClick={nexthandler} >Next</button>
           </div>
         </>
       ) : null}
