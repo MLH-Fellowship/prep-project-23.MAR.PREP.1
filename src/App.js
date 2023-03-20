@@ -3,8 +3,6 @@ import "./App.css";
 import logo from "./mlh-prep.png";
 import Suggestion from "./components/Suggestions/Suggestion";
 import Autocomplete from "./components/Autocomplete";
-import MusicCarousel from "./components/Carousel/MusicCarousel";
-import { Stack } from "@mui/system";
 
 function App() {
   const [error, setError] = useState(null);
@@ -163,17 +161,6 @@ function App() {
           }
           isLoaded={isLoaded}
         ></Suggestion>
-
-        <Stack
-        direction={'row'}
-        width='100%'
-        justifyContent={'center'}
-        alignItems='center'>
-          <MusicCarousel></MusicCarousel>
-        </Stack>
-
-           
-
       </>
     );
   }
