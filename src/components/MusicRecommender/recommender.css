@@ -1,0 +1,124 @@
+.recommendations {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  /* margin: 40px 0; */
+  margin-bottom: 1rem;
+  /* border: 1px solid red; */
+}
+
+.hero-img {
+  background-position: center center;
+  background-size: cover;
+  width: 580px;
+  height: 100%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-img:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+h1 {
+  color: #ebeae6;
+  font-size: 96px;
+  width: 90vw;
+  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  align-items: center;
+  font-weight: 500;
+  line-height: 130%;
+  z-index: 2;
+  position: relative;
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
+  opacity: 0.8;
+  bottom: -20%;
+  transform-origin: center;
+}
+
+.album-num {
+  position: absolute;
+  left: 0;
+  top: -18px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+h1 span {
+  width: 100%;
+}
+
+.album-title {
+  text-align: left;
+  position: relative;
+}
+
+h1 span:last-of-type {
+  text-align: right;
+}
+
+.emblem-container {
+  --emblem-size: 280px;
+  height: 280px;
+  width: 280px;
+  position: absolute;
+  z-index: 2;
+  transform: translate(calc(280px / 2), -40%);
+}
+
+.emblem {
+  font-size: 24px;
+  color: #ebeae6;
+  text-transform: lowercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  animation: rotating 10s linear infinite;
+  height: 100%;
+  width: 100%;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.emblem span {
+  position: absolute;
+  display: flex;
+  height: inherit;
+  width: 0;
+  justify-content: center;
+  align-items: flex-end;
+  transform-origin: center center;
+  width: 20px;
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+}

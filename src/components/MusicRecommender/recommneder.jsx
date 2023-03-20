@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import qs from "qs";
 
+import "./recommender.css";
+
 const Recommender = ({ city, weather }) => {
   const [songs, setSongs] = useState([]);
 
@@ -30,7 +32,7 @@ const Recommender = ({ city, weather }) => {
     }
   };
 
-  const spotifyRecommendationURI = `https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical&seed_tracks=0c6xIDDpzE81m2q797ordA&limit=15`;
+  const spotifyRecommendationURI = `https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical&seed_tracks=0c6xIDDpzE81m2q797ordA&limit=10`;
 
   const getRecommendations = async () => {
     const access_token = await getAuth();
@@ -52,7 +54,7 @@ const Recommender = ({ city, weather }) => {
         albumName: track.album.name,
         coverImg: track.album.images[0].url,
       };
-      setSongs(songs => [...songs, trackObj]);
+      setSongs((songs) => [...songs, trackObj]);
     });
   };
 
@@ -62,7 +64,35 @@ const Recommender = ({ city, weather }) => {
 
   return (
     <div>
-      <h2>recommended songs</h2>
+      <h2>Recommended Songs</h2>
+      {songs.length !== 0 ? (
+        <>
+          <div className="recommendations">
+            <div className="hero-img">
+              <img src={songs[0].coverImg} alt="" />
+            </div>
+            <div className="emblem-container">
+              <div className="emblem text"></div>
+            </div>
+            <h1 className="text" value="6">
+              <span className="album-num"></span>
+              <span className="album-title"></span>
+              <span>{songs[0].artist}</span>
+            </h1>
+          </div>
+          <div className="music-player">
+            <iframe
+              src={`https://open.spotify.com/embed/album/${songs[0].albumId}?utm_source=generator`}
+              width="100%"
+              height="80"
+              frameborder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </>
+      ) : null}
     </div>
   );
 };
