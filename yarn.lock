@@ -7,6 +7,11 @@
   "resolved" "https://registry.npmjs.org/@adobe/css-tools/-/css-tools-4.1.0.tgz"
   "version" "4.1.0"
 
+"@alan-ai/alan-sdk-web@^1.8.43":
+  "integrity" "sha512-aFYVmg/Lb7RTwt8jWEwYYfOUO+CZAnEPeiVkyFlUG/m9LlHlQhPR59PX5JLjxzcBdwYFlb5/KYInaTiT2S7a7Q=="
+  "resolved" "https://registry.npmjs.org/@alan-ai/alan-sdk-web/-/alan-sdk-web-1.8.43.tgz"
+  "version" "1.8.43"
+
 "@ampproject/remapping@^2.2.0":
   "integrity" "sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w=="
   "resolved" "https://registry.npmjs.org/@ampproject/remapping/-/remapping-2.2.0.tgz"

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
+import { VoiceButton } from "./components/alan-ai/VoiceButton";
 
 function App() {
   const [error, setError] = useState(null);
@@ -43,6 +44,7 @@ function App() {
   } else {
     return (
       <>
+        <VoiceButton />
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
           <h2>Enter a city below 👇</h2>
