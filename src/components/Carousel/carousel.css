@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/*Claymorphism player*/
+
+
+.card {
+  position: relative;
+  width: 400px;
+  height: 180px;
+  background-color: #fff;
+  
+  border-radius: 10px;
+  box-shadow: 25px 25px 50px rgba(9,148,255,0.25),
+  -10px -10px 30px rgba(9,148,255,0.1),
+  inset -5px -5px 15px rgba(9,148,255,0.5);
+}
+
+.content {
+  width: 100%;
+  padding: 40px 20px;
+  display: grid;
+  place-items: center;
+}
+.content h3 {
+  color: #0994ff;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.content h3 span {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #333;
+  text-transform: initial;
+}
+.content .sci {
+  position: relative;
+  display: flex;
+ 
+  justify-content: center;
+}
+.content .sci li {
+  list-style: none;
+}
+.content .sci li a {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  margin: 0 14px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  background-color: #fff;
+  color: #0994ff;
+  font-size: 1.15em;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(9,148,255,0.25),
+  -2px -2px 5px rgba(9,148,255,0.05),
+  inset -2px -2px 5px rgba(9,148,255,0.25);
+}
+
+/*glow effect*/
+.box-shadow-hover:hover {
+  box-shadow: 0 20px 20px -17px rgba(20, 102, 208, 0.53);
+ }
+
+ .card {
+  position: relative;
+  width: 400px;
+  height: 180px;
+  background-color: #fff;
+  
+  border-radius: 10px;
+  box-shadow: 25px 25px 50px rgba(9,148,255,0.25),
+  -10px -10px 30px rgba(9,148,255,0.1),
+  inset -5px -5px 15px rgba(9,148,255,0.5);
+}
+
+.content {
+  width: 100%;
+  padding: 40px 20px;
+  display: grid;
+  place-items: center;
+}
+.content h3 {
+  color: #0994ff;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.content h3 span {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #333;
+  text-transform: initial;
+}
+.content .sci {
+  position: relative;
+  display: flex;
+ 
+  justify-content: center;
+}
+.content .sci li {
+  list-style: none;
+}
+.content .sci li a {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  margin: 0 14px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  background-color: #fff;
+  color: #0994ff;
+  font-size: 1.15em;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(9,148,255,0.25),
+  -2px -2px 5px rgba(9,148,255,0.05),
+  inset -2px -2px 5px rgba(9,148,255,0.25);
+}
+
+.skipleft:hover{
+  filter: drop-shadow(0 10px 10px rgba(0,111,255,1)) 
+}
+
+.skipright:hover{
+  filter: drop-shadow(0 10px 10px rgba(255,95,64,1)) 
+}
+
+.play:hover{
+  filter: drop-shadow(0 10px 10px rgba(77,255,77,1)) 
+}
+
+.add-clay
+{
+
+  backdrop-filter: blur(7px);
+
+  background-color: rgba(255, 255, 255, 1);
+  
+  border-radius: 20px;
+  
+  box-shadow: 35px 35px 68px 0px rgba(92, 92, 134, 0.5), inset -9px -9px 16px 0px rgba(92, 92, 134, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+
+  transition: transform .2s;
+}
+
+/*This is for caly buttons*/
+.clayButton
+{
+  backdrop-filter: blur(8px);
+
+background-color: rgba(255, 255, 255, 1);
+
+border-radius: 35px;
+
+box-shadow: 35px 35px 68px 0px rgba(145, 192, 255, 0.5), inset -8px -8px 16px 0px rgba(145, 192, 255, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+}
+
+.emoji{
+  scale: 1.6;
+  margin-bottom: '20px';
+}
