@@ -11,6 +11,10 @@
   padding: 16px;
 }
 
+.card-body{
+  display: flex;
+}
+
 .card-title {
   font-size: 1.2rem;
   font-weight: bold;
@@ -22,6 +26,21 @@
   line-height: 1.5;
 }
 
+.card-link{
+  color: white;
+  text-decoration: none;
+}
+
+.card-img-top{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-description{
+  flex: 1;
+  margin-left: 1rem;
+}
 /* Add styling to the error message */
 
 .error-box{
