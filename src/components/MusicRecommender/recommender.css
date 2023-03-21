@@ -25,7 +25,7 @@
 .hero-img {
   /* border: 1px solid purple; */
   width: 600px;
-  height: 200px;
+  height: 160px;
   border-radius: 12px;
   overflow: hidden;
   /* position: relative; */
@@ -54,14 +54,15 @@
   line-height: 1;
   opacity: 0.8;
   color: #ebeae6;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+  /* text-shadow: 2px 2px rgba(0, 0, 0, 0.6); */
+  text-shadow: 4px 4px 15px rgba(0,0,0,0.6);
 }
 
 .album-name {
   position: absolute;
   z-index: 11;
   font-size: 50px;
-  top: 50px;
+  top: 35px;
   left: 0px;
   transform: translateX(-55%);
   line-height: 1;
@@ -72,61 +73,17 @@
   font-size: 60px;
   line-height: 1;
   opacity: 0.8;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+  /* text-shadow: 2px 2px rgba(0, 0, 0, 0.6); */
+  text-shadow: 4px 4px 5px rgba(0,0,0,0.6);
   color: #ebeae6;
 }
-
-/* emblem */
-
-/* .emblem-container {
-  height: 280px;
-  width: 280px;
-  position: absolute;
-  z-index: 2;
-  transform: translate(calc(280px / 2), -40%);
-} */
-
-/* .emblem {
-  font-size: 24px;
-  color: #ebeae6;
-  text-transform: lowercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform-origin: center center;
-  animation: rotating 10s linear infinite;
-  height: 100%;
-  width: 100%;
-  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-} */
-
-/* @keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-/* .emblem span {
-  position: absolute;
-  display: flex;
-  height: inherit;
-  width: 0;
-  justify-content: center;
-  align-items: flex-end;
-  transform-origin: center center;
-  width: 20px;
-  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
-} */
 
 .spotify-widget {
   width: 640px;
   z-index: 100;
   margin: 0 auto;
-  margin-bottom: 8px;
+  /* border: 1px solid red; */
+  margin-bottom: 2.5rem;
 }
 
 .spotify-widget iframe {
@@ -135,16 +92,16 @@
 }
 
 .button-container {
-  padding: 8px 5vw 24px;
+  margin-bottom: 3rem;
+  /* border: 1px solid red; */
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   z-index: 100;
 }
 
 .nav-arrow {
-  font-family: "Cormorant", "Bebas Neue", Helvetica Neue, Arial, sans-serif;
   font-size: 18px;
   display: flex;
   justify-content: center;
@@ -153,7 +110,7 @@
   height: 56px;
   background: none;
   border: none;
-  color: var(--color-light);
+  color: #ebeae6;
   opacity: 0.3;
   font-weight: 500;
   text-transform: lowercase;
@@ -162,7 +119,7 @@
 .nav-arrow span {
   width: 80px;
   height: 2px;
-  background: var(--color-light);
+  background: #ebeae6;
   position: relative;
   display: flex;
   justify-content: center;
@@ -181,7 +138,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  border: 2px solid var(--color-light);
+  border: 2px solid #ebeae6;
   left: 4px;
   transform: rotate(-45deg);
   border-bottom: none;
@@ -194,11 +151,10 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 2px solid var(--color-light);
+  border: 2px solid #ebeae6;
   right: -14px;
 }
 
-/* Arrowhead hover effect */
 .nav-arrow:hover span:before,
 .key-press-hover-left span:before,
 .key-press-hover-right span:before {
@@ -206,7 +162,6 @@
   height: 32px;
 }
 
-/* Arrowcircle hover effect */
 .nav-arrow:hover span:after,
 .key-press-hover-left span:after,
 .key-press-hover-right span:after {
@@ -215,38 +170,32 @@
   right: -26px;
 }
 
-/* Arrow body hover effect */
 .nav-arrow:hover span,
 .key-press-hover-left span,
 .key-press-hover-right span {
   width: 72px;
 }
 
-/* Prev circle */
 .scroll-left:hover span,
 .key-press-hover-left span {
   margin-right: 48px;
 }
 
-/* Next circle */
 .scroll-right:hover span,
 .key-press-hover-right span {
   margin-left: 48px;
 }
 
-/* Flips next arrow */
 .scroll-right span {
   margin-left: 32px;
   margin-right: 0;
   transform: rotateY(180deg);
 }
 
-/* Overwrite margin right 0 of next circle */
 .key-press-hover-right span {
   margin-left: 48px;
 }
 
-/* Arrow text hover effer */
 .nav-arrow:hover,
 .key-press-hover-left,
 .key-press-hover-right {

@@ -54,7 +54,7 @@ const Recommender = ({ city, weather }) => {
         num: key,
         albumId: track.album.id,
         artist: track.artists[0].name,
-        albumName: track.album.name,
+        albumName: sliceAlbum(track.album.name),
         coverImg: track.album.images[0].url,
       };
       setSongs((songs) => [...songs, trackObj]);
@@ -65,9 +65,15 @@ const Recommender = ({ city, weather }) => {
     getRecommendations();
   }, []);
 
-  useEffect(() => {
-    console.log(songs);
-  }, [songs]);
+  const sliceAlbum = (album) => {
+    console.log(album.indexOf("("));
+    if (album.indexOf("(") != -1) {
+      const newAlbumName = album.substring(0, album.indexOf("("));
+      return newAlbumName;
+    } else {
+      return album;
+    }
+  };
 
   const nexthandler = () => {
     setCurrentSong((currentSong) => currentSong + 1);
@@ -106,14 +112,14 @@ const Recommender = ({ city, weather }) => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
             ></iframe>
-            <div class="button-container">
-              <button class="scroll-left nav-arrow">
-                <span></span>Prev.
-              </button>
-              <button class="scroll-right nav-arrow">
-                Next<span></span>
-              </button>
-            </div>
+          </div>
+          <div class="button-container">
+            <button class="scroll-left nav-arrow">
+              <span></span>Prev
+            </button>
+            <button class="scroll-right nav-arrow" onClick={nexthandler}>
+              Next<span></span>
+            </button>
           </div>
         </>
       ) : null}
