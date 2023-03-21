@@ -1,5 +1,7 @@
 import { Bookmark, BookmarkBorderOutlined } from "@material-ui/icons";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -37,6 +39,9 @@ const Bookmarks = ({results, updateIcon}) =>{
         const addCity = {name: results.name}
         addCitiesInArray.push(addCity)
         localStorage.setItem("cities", JSON.stringify(addCitiesInArray))
+        
+        // Display a notification to the user
+        toast.success(`${results.name} has been added to your bookmarks!`);
     }
 
     const removeInfoHandler = (results) =>{
@@ -49,6 +54,8 @@ const Bookmarks = ({results, updateIcon}) =>{
             return city.name !== results.name
         })
         localStorage.setItem("cities", JSON.stringify(newArray))
+        // Display a notification to the user
+        toast.warning(`${results.name} has been removed from your bookmarks.`);
         
         
     }

@@ -5,6 +5,8 @@ import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import Autocomplete from "./components/Autocomplete";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [error, setError] = useState(null);
@@ -59,11 +61,13 @@ function App() {
               chosenForecast.sys.country = result.city.country;
               setResults(chosenForecast);
               setIsLoaded(true);
+              toast.success("Forecast data retrieved successfully!");
             }
           },
           (error) => {
             setIsLoaded(true);
             setError(error);
+            toast.error("Error ${error.code}: ${error.message}. Please check your internet connection and try again.")
           }
         );
     } else {
@@ -90,7 +94,8 @@ function App() {
   
   useEffect(() => {
     if (!navigator.geolocation) {
-      console.log("Geolocation is not supported by your browser")
+      console.log("Geolocation is not supported by your browser.")
+      toast.error("Sorry, geolocation is not supported by your browser.");
     } else {
       navigator.geolocation.getCurrentPosition(
         function(position){
@@ -102,10 +107,12 @@ function App() {
                 setIsLoaded(true);
                 setResults(result);
                 setCity(result.name);
+                toast.info(`Weather forecast data for ${result.name} was updated!`);
               })
             .catch((error) => {
                 setIsLoaded(true);
                 setError(error);
+                toast.error("Error ${error.code}: ${error.message}. Please check your internet connection and try again.")
               })
         },
         function(error) {
@@ -116,7 +123,11 @@ function App() {
   }, [])
 
   const handleCityChange = (city) => {
-    setCity(city);
+    if (city) {
+      setCity(city);
+    } else {
+      toast.warning("Please enter a valid city name.");
+    }
   };
 
   const currentTimeFormat = `${minTimestamp.split("T")[0]} ${
@@ -165,6 +176,7 @@ function App() {
             )}
           </div>
         </div>
+        <ToastContainer />
       </>
     );
   }
