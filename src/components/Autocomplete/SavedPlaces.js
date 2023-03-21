@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import SavedPlaceCard from "./SavedPlaceCard";
 import Modal from "react-modal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -103,7 +105,8 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
         textDecoration: "underline",
         color: "#000",
         cursor: "pointer"}}
-        onClick={() => handleRemove()}>Clear Bookmarks</button> 
+        onClick={() => { handleRemove(); toast.error("Saved locations were removed from local storage!"); }}>Clear Bookmarks</button>
+
         }       
         {
           cities.length === 0?
