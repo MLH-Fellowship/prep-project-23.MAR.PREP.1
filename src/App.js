@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Map from "./components/map/Map";
+// import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
 
 import Autocomplete from "./components/Autocomplete";
@@ -146,7 +146,7 @@ function App() {
             onChange={(event) => setDateTime(event.target.value)}
           />
 
-          <Map city={city} handleCityChange={handleCityChange} />
+          {/* <Map city={city} handleCityChange={handleCityChange} /> */}
 
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
