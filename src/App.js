@@ -143,7 +143,14 @@ function App() {
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
-            <Autocomplete setCity={handleCityChange} />
+
+//   removed inputfield(AutoComplete) once the modal is activated since it was being displayed in the modal
+            {!showBookmarks && <Autocomplete setCity={setCity} />}
+            {results && <Bookmarks results={results} updateIcon={updateIcon}/>}
+          </div>
+          <div>
+          <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} />
+
           </div>
           <h2>Select a date and time </h2>
           <input

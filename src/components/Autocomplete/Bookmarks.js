@@ -54,8 +54,10 @@ const Bookmarks = ({results, updateIcon}) =>{
             return city.name !== results.name
         })
         localStorage.setItem("cities", JSON.stringify(newArray))
+
         // Display a notification to the user
         toast.warning(`${results.name} has been removed from your bookmarks.`);
+
         
         
     }
