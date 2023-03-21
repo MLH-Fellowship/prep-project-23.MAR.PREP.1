@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import Autocomplete from "./components/Autocomplete";
@@ -114,6 +115,10 @@ function App() {
     }
   }, [])
 
+  const handleCityChange = (city) => {
+    setCity(city);
+  };
+
   const currentTimeFormat = `${minTimestamp.split("T")[0]} ${
     minTimestamp.split("T")[1].split(".")[0]
   }`;
@@ -127,11 +132,7 @@ function App() {
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
-            {!showBookmarks && <Autocomplete setCity={setCity} />}
-            {results && <Bookmarks results={results} updateIcon={updateIcon}/>}
-          </div>
-          <div>
-          <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} />
+            <Autocomplete setCity={handleCityChange} />
           </div>
           <h2>Select a date and time </h2>
           <input
@@ -141,6 +142,9 @@ function App() {
             max={maxTimestamp}
             onChange={(event) => setDateTime(event.target.value)}
           />
+
+          <Map city={city} handleCityChange={handleCityChange} />
+
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
             {isLoaded && results && (
