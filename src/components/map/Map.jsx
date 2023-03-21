@@ -35,6 +35,7 @@ function Map({ city, handleCityChange }) {
         display: "flex",
         justifyContent: "center",
         paddingTop: "10px",
+        zIndex: "-1"
       }}
     >
       <MapContainer
@@ -44,6 +45,7 @@ function Map({ city, handleCityChange }) {
         style={{
           width: "50vw",
           minHeight: "300px",
+          zIndex: "-1"     
         }}
       >
         <TileLayer
