@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-// import Map from "./components/map/Map";
+import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
 
 import Autocomplete from "./components/Autocomplete";
@@ -14,7 +14,6 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
-  const [weather, setWeather] = useState('')
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -77,7 +76,6 @@ function App() {
               setIsLoaded(false);
             } else {
               console.log(result.weather[0].main);
-              setWeather(result.weather[0].main);
               setResults(result);
               setIsLoaded(true);
             }
@@ -89,34 +87,35 @@ function App() {
         );
     }
   }, [city, dateTime]);
-  
+
   // getting user's location
   useEffect(() => {
     if (!navigator.geolocation) {
-      console.log("Geolocation is not supported by your browser")
+      console.log("Geolocation is not supported by your browser");
     } else {
       navigator.geolocation.getCurrentPosition(
-        function(position){
-          const {latitude, longitude} = position.coords;
-          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
-            .then(res => res.json())
-            .then(
-              (result) => {
-                setIsLoaded(true);
-                setResults(result);
-                setCity(result.name);
-              })
+        function (position) {
+          const { latitude, longitude } = position.coords;
+          fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+          )
+            .then((res) => res.json())
+            .then((result) => {
+              setIsLoaded(true);
+              setResults(result);
+              setCity(result.name);
+            })
             .catch((error) => {
-                setIsLoaded(true);
-                setError(error);
-              })
+              setIsLoaded(true);
+              setError(error);
+            });
         },
-        function(error) {
+        function (error) {
           console.error(`Error: ${error.message}`);
         }
-      )   
+      );
     }
-  }, [])
+  }, []);
 
   const handleCityChange = (city) => {
     setCity(city);
@@ -146,7 +145,7 @@ function App() {
             onChange={(event) => setDateTime(event.target.value)}
           />
 
-          {/* <Map city={city} handleCityChange={handleCityChange} /> */}
+          <Map city={city} handleCityChange={handleCityChange} />
 
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
@@ -167,7 +166,7 @@ function App() {
               </h2>
             )}
           </div>
-          <Recommender city={city} weather={weather} />
+          <Recommender />
         </div>
       </>
     );

@@ -1,16 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import qs from "qs";
 
 import "./recommender.css";
 
-const Recommender = ({ city, weather }) => {
+// require('dotenv').config()
+
+const Recommender = () => {
   const [songs, setSongs] = useState([]);
 
   const [currentSong, setCurrentSong] = useState(0);
 
-  const clientId = "fa8c44b84bf34a6d9f7a16dfd6a5b740";
-  const clientSecret = "17f6323c3cac4b218aa9040cdc0f194e";
+  const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+  const clientSecret = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
+
+  console.log(clientId);
+  console.log(clientSecret);
 
   const auth_token = Buffer.from(
     `${clientId}:${clientSecret}`,

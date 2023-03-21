@@ -63,7 +63,12 @@
   height: fit-content;
   text-align: left;
   line-height: 1;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+}
+
+@keyframes text-movement {
+  0%, 20% { transform: translateY(60px); opacity: 0; }
+  40%, 100% { transform: translateY(0); opacity: 0.8; }
 }
 
 .album-name span {
@@ -74,29 +79,10 @@
   opacity: 0.8;
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
   color: #ebeae6;
-  transform: translateY(60px);
-  /* opacity: 0; */
+  animation: text-movement 1s linear;
+  /* transition-property: opacity, transform; */
+	/* transition-duration: 1.4s, 0.5s; */
 }
-
-/* .blur{
-  position: absolute;
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
-  z-index: 20;
-  height: 60px;
-  width: 100px;
-  top: 35px;
-  left: 240px;
-  overflow: hidden;
-}
-
-.blur span {
-  font-size: 60px;
-  line-height: 1;
-  opacity: 0.8;
-  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
-  color: #ebeae6;
-} */
 
 .song-num {
   position: absolute;
