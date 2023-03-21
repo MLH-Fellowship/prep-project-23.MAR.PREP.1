@@ -1,93 +1,92 @@
 .recommendations {
-  height: 100%;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  /* margin: 40px 0; */
-  margin-bottom: 2.5rem;
   /* border: 1px solid red; */
-}
-
-.hero-img {
-  background-position: center;
-  background-size: cover;
-  width: 580px;
-  height: 100%;
-  border: 1px solid red;
-  aspect-ratio: 1/1;
-  position: absolute;
-  z-index: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: fit-content;
+  position: relative;
+  margin: 2rem auto 4rem;
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
-.hero-img:after {
+.recommendations:after {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 10;
+  border-radius: 12px;
+  display: block;
+  /* transform: translate(-1px); */
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
 }
 
-h1 {
-  color: #ebeae6;
-  font-size: 96px;
-  width: 90vw;
-  max-width: 980px;
-  display: flex;
-  flex-direction: column;
-  white-space: nowrap;
-  align-items: center;
-  font-weight: 500;
-  line-height: 130%;
-  z-index: 2;
-  position: relative;
-  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
-  opacity: 0.8;
-  bottom: -20%;
-  transform-origin: center;
+.hero-img {
+  /* border: 1px solid purple; */
+  width: 600px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  /* position: relative; */
 }
 
-.album-num {
-  position: absolute;
-  left: 0;
-  top: -18px;
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 1;
-  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-}
-
-h1 span {
+.album-cover {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* aspect-ratio: auto; */
+  z-index: 1;
 }
 
-.album-title {
-  text-align: left;
-  position: relative;
+.artist-name {
+  position: absolute;
+  z-index: 11;
+  font-size: 50px;
+  bottom: 0px;
+  right: 0;
+  transform: translate(55%, 40%);
+  line-height: 1;
 }
 
-h1 span:last-of-type {
-  text-align: right;
+.artist-name span {
+  font-size: 60px;
+  line-height: 1;
+  opacity: 0.8;
+  color: #ebeae6;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
 }
 
-.emblem-container {
+.album-name {
+  position: absolute;
+  z-index: 11;
+  font-size: 50px;
+  top: 50px;
+  left: 0px;
+  transform: translateX(-55%);
+  line-height: 1;
+  /* border: 1px solid red; */
+}
+
+.album-name span {
+  font-size: 60px;
+  line-height: 1;
+  opacity: 0.8;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.6);
+  color: #ebeae6;
+}
+
+/* emblem */
+
+/* .emblem-container {
   height: 280px;
   width: 280px;
   position: absolute;
   z-index: 2;
   transform: translate(calc(280px / 2), -40%);
-}
+} */
 
-.emblem {
+/* .emblem {
   font-size: 24px;
   color: #ebeae6;
   text-transform: lowercase;
@@ -99,9 +98,9 @@ h1 span:last-of-type {
   height: 100%;
   width: 100%;
   text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-}
+} */
 
-@keyframes rotating {
+/* @keyframes rotating {
   from {
     transform: rotate(0deg);
   }
@@ -109,9 +108,9 @@ h1 span:last-of-type {
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
-.emblem span {
+/* .emblem span {
   position: absolute;
   display: flex;
   height: inherit;
@@ -121,17 +120,137 @@ h1 span:last-of-type {
   transform-origin: center center;
   width: 20px;
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
-}
-
+} */
 
 .spotify-widget {
-	width: 580px;
-	z-index: 100;
-    margin: 0 auto;
-	margin-bottom: 8px;
+  width: 640px;
+  z-index: 100;
+  margin: 0 auto;
+  margin-bottom: 8px;
 }
 
 .spotify-widget iframe {
-    border-radius: 12px;
-    width: 580px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.button-container {
+  padding: 8px 5vw 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-arrow {
+  font-family: "Cormorant", "Bebas Neue", Helvetica Neue, Arial, sans-serif;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  height: 56px;
+  background: none;
+  border: none;
+  color: var(--color-light);
+  opacity: 0.3;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.nav-arrow span {
+  width: 80px;
+  height: 2px;
+  background: var(--color-light);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.nav-arrow span:before,
+.nav-arrow span:after,
+.nav-arrow span {
+  transition: all 0.3s ease;
+}
+
+.nav-arrow span:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-light);
+  left: 4px;
+  transform: rotate(-45deg);
+  border-bottom: none;
+  border-right: none;
+}
+
+.nav-arrow span:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-light);
+  right: -14px;
+}
+
+/* Arrowhead hover effect */
+.nav-arrow:hover span:before,
+.key-press-hover-left span:before,
+.key-press-hover-right span:before {
+  width: 32px;
+  height: 32px;
+}
+
+/* Arrowcircle hover effect */
+.nav-arrow:hover span:after,
+.key-press-hover-left span:after,
+.key-press-hover-right span:after {
+  width: 48px;
+  height: 48px;
+  right: -26px;
+}
+
+/* Arrow body hover effect */
+.nav-arrow:hover span,
+.key-press-hover-left span,
+.key-press-hover-right span {
+  width: 72px;
+}
+
+/* Prev circle */
+.scroll-left:hover span,
+.key-press-hover-left span {
+  margin-right: 48px;
+}
+
+/* Next circle */
+.scroll-right:hover span,
+.key-press-hover-right span {
+  margin-left: 48px;
+}
+
+/* Flips next arrow */
+.scroll-right span {
+  margin-left: 32px;
+  margin-right: 0;
+  transform: rotateY(180deg);
+}
+
+/* Overwrite margin right 0 of next circle */
+.key-press-hover-right span {
+  margin-left: 48px;
+}
+
+/* Arrow text hover effer */
+.nav-arrow:hover,
+.key-press-hover-left,
+.key-press-hover-right {
+  opacity: 1;
+  cursor: pointer;
+  font-size: 22px;
 }

@@ -7,7 +7,7 @@ import "./recommender.css";
 const Recommender = ({ city, weather }) => {
   const [songs, setSongs] = useState([]);
 
-  const [currentSong, setCurrentSong] = useState(0)
+  const [currentSong, setCurrentSong] = useState(0);
 
   const clientId = "fa8c44b84bf34a6d9f7a16dfd6a5b740";
   const clientSecret = "17f6323c3cac4b218aa9040cdc0f194e";
@@ -49,7 +49,7 @@ const Recommender = ({ city, weather }) => {
 
     const tracks = response.data.tracks;
 
-    tracks.forEach((track,key) => {
+    tracks.forEach((track, key) => {
       const trackObj = {
         num: key,
         albumId: track.album.id,
@@ -67,12 +67,11 @@ const Recommender = ({ city, weather }) => {
 
   useEffect(() => {
     console.log(songs);
-  }, [songs])
+  }, [songs]);
 
   const nexthandler = () => {
-    setCurrentSong(currentSong => currentSong + 1)
-  }
-  
+    setCurrentSong((currentSong) => currentSong + 1);
+  };
 
   return (
     <div>
@@ -81,16 +80,21 @@ const Recommender = ({ city, weather }) => {
         <>
           <div className="recommendations">
             <div className="hero-img">
-              <img src={songs[currentSong].coverImg} alt="" />
+              <img
+                className="album-cover"
+                src={songs[currentSong].coverImg}
+                alt=""
+              />
             </div>
             <div className="emblem-container">
               <div className="emblem text"></div>
             </div>
-            <h1 className="text" value="6">
-              <span className="album-num">{songs[currentSong].key}</span>
-              <span className="album-title"></span>
-              <span>{songs[0].artist}</span>
-            </h1>
+            <div className="artist-name">
+              <span>{songs[currentSong].artist}</span>
+            </div>
+            <div className="album-name">
+              <span>{songs[currentSong].albumName}</span>
+            </div>
           </div>
           <div className="spotify-widget">
             <iframe
@@ -102,7 +106,14 @@ const Recommender = ({ city, weather }) => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
             ></iframe>
-            <button onClick={nexthandler} >Next</button>
+            <div class="button-container">
+              <button class="scroll-left nav-arrow">
+                <span></span>Prev.
+              </button>
+              <button class="scroll-right nav-arrow">
+                Next<span></span>
+              </button>
+            </div>
           </div>
         </>
       ) : null}
