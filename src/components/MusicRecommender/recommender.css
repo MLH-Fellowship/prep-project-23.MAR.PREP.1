@@ -1,5 +1,4 @@
 .recommendations {
-  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +6,6 @@
   position: relative;
   margin: 2rem auto 4rem;
   border-radius: 12px;
-  /* overflow: hidden; */
 }
 
 .recommendations:after {
@@ -18,24 +16,20 @@
   z-index: 10;
   border-radius: 12px;
   display: block;
-  /* transform: translate(-1px); */
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
 }
 
 .hero-img {
-  /* border: 1px solid purple; */
   width: 600px;
   height: 160px;
   border-radius: 12px;
   overflow: hidden;
-  /* position: relative; */
 }
 
 .album-cover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* aspect-ratio: auto; */
   z-index: 1;
 }
 
@@ -53,6 +47,7 @@
   font-size: 60px;
   line-height: 1;
   opacity: 0.8;
+  font-weight: 500;
   color: #ebeae6;
   text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.6);
 }
@@ -65,20 +60,22 @@
   top: 35px;
   left: -100px;
   white-space: nowrap;
+  height: fit-content;
   text-align: left;
-  /* overflow: hidden; */
   line-height: 1;
-  /* border: 1px solid red; */
-  /* filter: blur(8px); */
-  /* -webkit-filter: blur(8px); */
+  border: 1px solid red;
 }
 
 .album-name span {
   font-size: 60px;
   line-height: 1;
+  font-weight: 500;
+  display: block;
   opacity: 0.8;
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
   color: #ebeae6;
+  transform: translateY(60px);
+  /* opacity: 0; */
 }
 
 /* .blur{
@@ -107,7 +104,6 @@
   font-size: 35px;
   top: 0px;
   left: -100px;
-  /* transform: translateX(-55%); */
   line-height: 1;
   /* border: 1px solid red; */
 }
@@ -118,6 +114,7 @@
   opacity: 0.8;
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
   color: #ebeae6;
+  padding-left: 2px;
 }
 
 .spotify-widget {

@@ -65,12 +65,20 @@ const Recommender = ({ city, weather }) => {
     getRecommendations();
   }, []);
 
+  const setAlbumLength = (album) => {
+    if (album.length > 12) {
+      album = album.slice(0, 13);
+      console.log(album);
+      return album + "..";
+    } else return album;
+  };
+
   const sliceAlbum = (album) => {
     if (album.indexOf("(") !== -1) {
       const newAlbumName = album.substring(0, album.indexOf("("));
-      return newAlbumName;
+      return setAlbumLength(newAlbumName);
     } else {
-      return album;
+      return setAlbumLength(album);
     }
   };
 
@@ -90,22 +98,13 @@ const Recommender = ({ city, weather }) => {
     }
   };
 
-  const albumRef = useRef();
-
-  const [x, setX] = useState();
-  const [y, setY] = useState();
-
-  function getPosition(el) {
-    var rect = el.current.getBoundingClientRect();
-    setX(rect.left);
-    setY(rect.top);
-  }
-
-  useEffect(() => {
-    if (albumRef.current) {
-      getPosition(albumRef);
+  const albumNumber = (number) => {
+    if (number === songs.length) {
+      return number + ".";
+    } else if (number < 10) {
+      return "0" + number + ".";
     }
-  }, [albumRef.current]);
+  };
 
   return (
     <div>
@@ -124,9 +123,9 @@ const Recommender = ({ city, weather }) => {
               <div className="emblem text"></div>
             </div>
             <div className="song-num">
-              <span>{songs[currentSong].num + 1}</span>
+              <span>{albumNumber(songs[currentSong].num + 1)}</span>
             </div>
-            <div ref={albumRef} className="album-name">
+            <div className="album-name">
               <span>{songs[currentSong].albumName}</span>
             </div>
             <div className="artist-name">
