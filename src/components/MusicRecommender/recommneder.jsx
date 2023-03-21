@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import qs from "qs";
 
@@ -66,8 +66,7 @@ const Recommender = ({ city, weather }) => {
   }, []);
 
   const sliceAlbum = (album) => {
-    console.log(album.indexOf("("));
-    if (album.indexOf("(") != -1) {
+    if (album.indexOf("(") !== -1) {
       const newAlbumName = album.substring(0, album.indexOf("("));
       return newAlbumName;
     } else {
@@ -79,6 +78,27 @@ const Recommender = ({ city, weather }) => {
     setCurrentSong((currentSong) => currentSong + 1);
   };
 
+  const albumRef = useRef();
+
+  const [x, setX] = useState();
+  const [y, setY] = useState();
+
+  const getPosition = () => {
+    const xPosition = albumRef.current.offsetLeft;
+    const yPosition = albumRef.current.offsetTop;
+    setX(xPosition);
+    setY(yPosition);
+    console.log(xPosition, yPosition);
+  };
+
+  useEffect(() => {
+    // console.log(albumRef);
+    if (albumRef.current) {
+      getPosition();
+      console.log(albumRef);
+    }
+  }, [albumRef]);
+
   return (
     <div>
       <h2>Recommended Songs</h2>
@@ -89,17 +109,20 @@ const Recommender = ({ city, weather }) => {
               <img
                 className="album-cover"
                 src={songs[currentSong].coverImg}
-                alt=""
+                alt="album-cover"
               />
             </div>
             <div className="emblem-container">
               <div className="emblem text"></div>
             </div>
+            <div className="song-num">
+              <span>{songs[currentSong].num + 1}</span>
+            </div>
+            <div ref={albumRef} className="album-name">
+              <span>{songs[currentSong].albumName}</span>
+            </div>
             <div className="artist-name">
               <span>{songs[currentSong].artist}</span>
-            </div>
-            <div className="album-name">
-              <span>{songs[currentSong].albumName}</span>
             </div>
           </div>
           <div className="spotify-widget">
@@ -108,16 +131,16 @@ const Recommender = ({ city, weather }) => {
               width="100%"
               height="80"
               frameborder="0"
-              allowfullscreen=""
+              allowfullscreen
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
             ></iframe>
           </div>
-          <div class="button-container">
-            <button class="scroll-left nav-arrow">
+          <div className="button-container">
+            <button className="scroll-left nav-arrow">
               <span></span>Prev
             </button>
-            <button class="scroll-right nav-arrow" onClick={nexthandler}>
+            <button className="scroll-right nav-arrow" onClick={nexthandler}>
               Next<span></span>
             </button>
           </div>

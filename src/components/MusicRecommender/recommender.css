@@ -55,7 +55,7 @@
   opacity: 0.8;
   color: #ebeae6;
   /* text-shadow: 2px 2px rgba(0, 0, 0, 0.6); */
-  text-shadow: 4px 4px 15px rgba(0,0,0,0.6);
+  text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.6);
 }
 
 .album-name {
@@ -74,8 +74,18 @@
   line-height: 1;
   opacity: 0.8;
   /* text-shadow: 2px 2px rgba(0, 0, 0, 0.6); */
-  text-shadow: 4px 4px 5px rgba(0,0,0,0.6);
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
   color: #ebeae6;
+}
+
+.song-num {
+  position: absolute;
+  z-index: 11;
+  font-size: 35px;
+  top: 0px;
+  left: 0px;
+  transform: translateX(-55%);
+  line-height: 1;
 }
 
 .spotify-widget {
