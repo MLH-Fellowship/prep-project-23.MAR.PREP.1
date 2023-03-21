@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import foodCategories from "./foodCategories.json";
+import activitiesCategories from "./Activities.json;
 
 function activityRecommendation({ weatherCode }) {
   const [recommendedactivity, setRecommendedactivities] = useState([]);
@@ -7,7 +7,7 @@ function activityRecommendation({ weatherCode }) {
   useEffect(() => {
     const activityCategory = chooseactivity(weatherCode);
 
-    //choose 5 random foods from category
+    //choose 5 random activities from category
     const randomRecommendations = new Set();
     while (randomRecommendations.size < 3) {
       const randIdx = Math.floor(
