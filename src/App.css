@@ -23,7 +23,7 @@ body {
   width: 400px;
 	margin: 0;
   font-size: 5.5rem;
-	z-index: 999;
+	z-index: 1;
 }
 
 .Results {
