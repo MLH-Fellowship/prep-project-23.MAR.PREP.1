@@ -74,8 +74,20 @@ const Recommender = ({ city, weather }) => {
     }
   };
 
-  const nexthandler = () => {
-    setCurrentSong((currentSong) => currentSong + 1);
+  const nextHandler = () => {
+    if (currentSong + 1 === songs.length) {
+      setCurrentSong(0);
+    } else {
+      setCurrentSong((currentSong) => currentSong + 1);
+    }
+  };
+
+  const prevHandler = () => {
+    if (currentSong === 0) {
+      setCurrentSong(songs.length - 1);
+    } else {
+      setCurrentSong((currentSong) => currentSong - 1);
+    }
   };
 
   const albumRef = useRef();
@@ -83,21 +95,17 @@ const Recommender = ({ city, weather }) => {
   const [x, setX] = useState();
   const [y, setY] = useState();
 
-  const getPosition = () => {
-    const xPosition = albumRef.current.offsetLeft;
-    const yPosition = albumRef.current.offsetTop;
-    setX(xPosition);
-    setY(yPosition);
-    console.log(xPosition, yPosition);
-  };
+  function getPosition(el) {
+    var rect = el.current.getBoundingClientRect();
+    setX(rect.left);
+    setY(rect.top);
+  }
 
   useEffect(() => {
-    // console.log(albumRef);
     if (albumRef.current) {
-      getPosition();
-      console.log(albumRef);
+      getPosition(albumRef);
     }
-  }, [albumRef]);
+  }, [albumRef.current]);
 
   return (
     <div>
@@ -130,17 +138,17 @@ const Recommender = ({ city, weather }) => {
               src={`https://open.spotify.com/embed/album/${songs[currentSong].albumId}?utm_source=generator`}
               width="100%"
               height="80"
-              frameborder="0"
-              allowfullscreen
+              frameBorder={0}
+              allowFullScreen
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
             ></iframe>
           </div>
           <div className="button-container">
-            <button className="scroll-left nav-arrow">
+            <button onClick={prevHandler} className="scroll-left nav-arrow">
               <span></span>Prev
             </button>
-            <button className="scroll-right nav-arrow" onClick={nexthandler}>
+            <button className="scroll-right nav-arrow" onClick={nextHandler}>
               Next<span></span>
             </button>
           </div>
