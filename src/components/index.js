@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import activitiesCategories from "./Activities.json;
+import activitiesCategories from "./Activities.json";
 
 function activityRecommendation({ weatherCode }) {
   const [recommendedactivity, setRecommendedactivities] = useState([]);
