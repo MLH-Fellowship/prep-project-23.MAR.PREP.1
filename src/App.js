@@ -183,7 +183,7 @@ function App() {
           </div>
         </div>
         <footer>
-          <div class="container">
+          <div class="footer">
             <div class="row">
               <div class="col-md-6">
                 <p>&copy; 2023 Major League Hacking. All Rights Reserved.</p>
