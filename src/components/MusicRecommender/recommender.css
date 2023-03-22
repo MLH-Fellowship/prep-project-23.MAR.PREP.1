@@ -67,8 +67,16 @@
 }
 
 @keyframes text-movement {
-  0%, 20% { transform: translateY(60px); opacity: 0; }
-  40%, 100% { transform: translateY(0); opacity: 0.8; }
+  0%,
+  20% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  40%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
 }
 
 .album-name span {
@@ -81,7 +89,7 @@
   color: #ebeae6;
   animation: text-movement 1s linear;
   /* transition-property: opacity, transform; */
-	/* transition-duration: 1.4s, 0.5s; */
+  /* transition-duration: 1.4s, 0.5s; */
 }
 
 .song-num {
