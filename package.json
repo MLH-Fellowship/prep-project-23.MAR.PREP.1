@@ -6,7 +6,10 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "husky": "^8.0.3",
     "leaflet": "^1.9.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.6",
     "react": "^17.0.2",
     "react-accessible-accordion": "^5.0.0",
     "react-dom": "^17.0.2",
@@ -19,8 +22,9 @@
   "scripts": {
     "start": "react-scripts  --openssl-legacy-provider start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --force Exit",
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +43,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,html}": "prettier --write"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0"
   }
 }
