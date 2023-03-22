@@ -1,7 +1,7 @@
 body {
-    background-color: #133667;
-    color: white;
-    text-align: center;
+  background-color: #133667;
+  color: white;
+  text-align: center;
 }
 
 .logo {
@@ -21,9 +21,9 @@ body {
 
 .search-bar-container {
   width: 400px;
-	margin: 0;
+  margin: 0;
   font-size: 5.5rem;
-	z-index: 1;
+  z-index: 999;
 }
 
 .Results {
@@ -32,7 +32,7 @@ body {
   border-radius: 8px;
   color: black;
   padding: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   width: 75%;
   max-width: 400px;
 }
@@ -110,4 +110,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.bg_img {
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -2;
 }
