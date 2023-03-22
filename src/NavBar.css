@@ -1,0 +1,25 @@
+.nav{
+    top: 0;
+    
+    background: rgba(0,0,0,.3);
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    padding: 1% ;
+    width: 98%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* .racoon{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: 10%;
+    margin-top: 15px;
+} */
+
