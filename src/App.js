@@ -5,6 +5,7 @@ import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
 import Suggestion from "./components/Suggestions/Suggestion";
+import WeatherWidget from "./components/Widgets";
 import Autocomplete from "./components/Autocomplete";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
@@ -183,6 +184,7 @@ function App() {
             max={maxTimestamp}
             onChange={(event) => setDateTime(event.target.value)}
           />
+          <WeatherWidget />
           <Map city={city} handleCityChange={handleCityChange} />
 
           <div className="Results">
