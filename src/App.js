@@ -4,7 +4,7 @@ import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
 
 import Autocomplete from "./components/Autocomplete";
-import FoodRecommendation from "./components/FoodRecommendation";
+import activityRecommendation from "./components/Autocomplete/Activities.json";
 
 function App() {
   const [error, setError] = useState(null);
