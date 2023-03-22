@@ -127,7 +127,6 @@ function App() {
   } else {
     return (
       <>
-        <VoiceButton />
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
           <h2>Enter a city below 👇</h2>
@@ -165,6 +164,7 @@ function App() {
             )}
           </div>
         </div>
+        <VoiceButton handleCityChange={handleCityChange} />
       </>
     );
   }
