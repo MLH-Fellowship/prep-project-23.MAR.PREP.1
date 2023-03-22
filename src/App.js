@@ -8,6 +8,8 @@ import Autocomplete from "./components/Autocomplete";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faFacebook, faGithub, faLinkedin, faDiscord,} from "@fortawesome/free-brands-svg-icons";
 
 function App() {
   const [error, setError] = useState(null);
@@ -205,6 +207,48 @@ function App() {
             )}
           </div>
         </div>
+        <footer>
+          <div class="footer">
+            <div class="row">
+              <div class="col-md-6">
+                <p>&copy; 2023 Major League Hacking. All Rights Reserved.</p>
+              </div>
+              <div class="col-md-6">
+              <div className="social-icons">
+          <a
+            href="https://github.com/MLH"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faGithub} size="2x" />
+          </a>
+          <a
+            href="https://www.linkedin.com/school/mlh-fellowship/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faLinkedin} size="2x" />
+          </a>
+          <a
+            href="https://www.facebook.com/MajorLeagueHacking/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faFacebook} size="2x" />
+          </a>
+          <a
+            href="https://discord.mlh.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faDiscord} size="2x" />
+          </a>
+        </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
         <ToastContainer />
         <Suggestion
           weatherType={

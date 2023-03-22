@@ -120,3 +120,30 @@ body {
 	left: 0;
 	z-index: -2;
 }
+
+.social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #133667;
+  text-align: center;
+  color: #ffffff;
+  margin-right: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+  gap: 10px;
+  padding: 20px;
+  background: rgba(0,0,0,.3);
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);}
