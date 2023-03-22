@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
-
+import WeatherWidget from "./components/Widgets";
 import Autocomplete from "./components/Autocomplete";
 
 function App() {
@@ -139,7 +139,7 @@ function App() {
             max={maxTimestamp}
             onChange={(event) => setDateTime(event.target.value)}
           />
-
+          <WeatherWidget />
           <Map city={city} handleCityChange={handleCityChange} />
 
           <div className="Results">
