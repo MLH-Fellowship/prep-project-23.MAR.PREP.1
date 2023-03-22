@@ -4,6 +4,7 @@ import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
 import Suggestion from "./components/Suggestions/Suggestion";
 import Autocomplete from "./components/Autocomplete";
+import FoodRecommendation from "./components/FoodRecommendation";
 
 function App() {
   const [error, setError] = useState(null);
@@ -183,6 +184,11 @@ function App() {
               <h2>
                 No results found for {city} at {dateTime}
               </h2>
+            )}
+          </div>
+          <div className="FoodRecommendation">
+            {results && (
+              <FoodRecommendation weatherCode={results.weather[0].id} />
             )}
           </div>
         </div>
