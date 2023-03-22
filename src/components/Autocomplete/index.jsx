@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
-import { useFetch } from '../../hooks/useFetch';
+import { useFetch } from '../hooks/useFetch';
 
 const Autocomplete = ({ setCity }) => {
 	const [locations, setLocations] = useState([]);

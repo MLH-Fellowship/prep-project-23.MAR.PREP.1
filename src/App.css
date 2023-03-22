@@ -1,37 +1,66 @@
 body {
-    background-color: #133667;
-    color: white;
-    text-align: center;
+  background-color: #133667;
+  color: white;
+  text-align: center;
 }
 
 .logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
-  margin-top: 20px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 20%;
+margin-top: 20px;
 }
 
 .input-container {
-  padding: 10px;
-  display: flex;
-  justify-content: center;
+padding: 10px;
+display: flex;
+justify-content: center;
 }
 
 .search-bar-container {
-  width: 400px;
-	margin: 0;
-  font-size: 5.5rem;
-	z-index: 999;
+width: 400px;
+margin: 0;
+font-size: 5.5rem;
+z-index: 999;
 }
 
 .Results {
-  background-color: white;
-  margin: 20px auto;
-  border-radius: 8px;
-  color: black;
-  padding: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  width: 75%;
-  max-width: 400px;
+background-color: white;
+margin: 20px auto;
+border-radius: 8px;
+color: black;
+padding: 20px;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+width: 75%;
+max-width: 400px;
 }
+
+.activity-recommendation-container {
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 20px;
+background-color: rgb(49, 126, 219);
+margin: 20px auto;
+border-radius: 8px;
+width: 75%;
+max-width: 400px;
+}
+
+.activity-box {
+background-color: rgba(0, 0, 0, 0.1);
+margin: 4px;
+padding: 10px;
+border-radius: 8px;
+}
+
+.activity-name {
+color: white;
+font-size: 1.1em;
+margin: 0;
+text-align: center;
+font-weight: normal;
+}
+
+

@@ -42,7 +42,7 @@ const SavedPlaces = ({display, newLocationSaved}) => {
 
   const buttonStyles ={
     
-    " color":'pink',
+    " color":'yellow',
     
   }
 
