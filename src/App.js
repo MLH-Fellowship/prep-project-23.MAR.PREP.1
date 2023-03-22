@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
-import logo from "./mlh-prep.png";
+// import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import Autocomplete from "./components/Autocomplete";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
@@ -9,6 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFacebook, faGithub, faLinkedin, faDiscord,} from "@fortawesome/free-brands-svg-icons";
+import NavBar from './NavBar';
+
 
 function App() {
   const [error, setError] = useState(null);
@@ -141,7 +143,8 @@ function App() {
   } else {
     return (
       <>
-        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+        {/* <img className="logo" src={logo} alt="MLH Prep Logo"></img> */}
+        <NavBar display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
@@ -149,7 +152,7 @@ function App() {
             {results && <Bookmarks results={results} updateIcon={updateIcon}/>}
           </div>
           <div>
-          <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} />
+          {/* <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} /> */}
 
           </div>
           <h2>Select a date and time </h2>
