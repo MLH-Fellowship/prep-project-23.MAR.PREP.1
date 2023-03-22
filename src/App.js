@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
-// import logo from "./mlh-prep.png";
+import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import Suggestion from "./components/Suggestions/Suggestion";
 import Autocomplete from "./components/Autocomplete";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFacebook, faGithub, faLinkedin, faDiscord,} from "@fortawesome/free-brands-svg-icons";
-import NavBar from './NavBar';
-
 
 function App() {
   const [error, setError] = useState(null);
@@ -167,8 +163,7 @@ function App() {
   } else {
     return (
       <>
-        {/* <img className="logo" src={logo} alt="MLH Prep Logo"></img> */}
-        <NavBar display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
+        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
@@ -176,7 +171,7 @@ function App() {
             {results && <Bookmarks results={results} updateIcon={updateIcon}/>}
           </div>
           <div>
-          {/* <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} /> */}
+          <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} />
 
           </div>
           <h2>Select a date and time </h2>
@@ -210,48 +205,6 @@ function App() {
             )}
           </div>
         </div>
-        <footer>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <p>&copy; 2023 Major League Hacking. All Rights Reserved.</p>
-              </div>
-              <div class="col-md-6">
-              <div className="social-icons">
-          <a
-            href="https://github.com/MLH"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faGithub} size="2x" />
-          </a>
-          <a
-            href="https://www.linkedin.com/school/mlh-fellowship/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faLinkedin} size="2x" />
-          </a>
-          <a
-            href="https://www.facebook.com/MajorLeagueHacking/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faFacebook} size="2x" />
-          </a>
-          <a
-            href="https://discord.mlh.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faDiscord} size="2x" />
-          </a>
-        </div>
-              </div>
-            </div>
-          </div>
-        </footer>
-
         <ToastContainer />
         <Suggestion
           weatherType={
