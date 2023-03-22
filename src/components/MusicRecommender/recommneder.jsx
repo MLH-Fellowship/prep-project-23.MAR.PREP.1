@@ -4,8 +4,6 @@ import qs from "qs";
 
 import "./recommender.css";
 
-// require('dotenv').config()
-
 const Recommender = () => {
   const [songs, setSongs] = useState([]);
 
@@ -14,77 +12,71 @@ const Recommender = () => {
   const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
 
-  console.log(clientId);
-  console.log(clientSecret);
-
   const auth_token = Buffer.from(
     `${clientId}:${clientSecret}`,
     "utf-8"
   ).toString("base64");
 
-  const getAuth = async () => {
-    try {
-      const token_url = "https://accounts.spotify.com/api/token";
-      const data = qs.stringify({ grant_type: "client_credentials" });
-
-      const response = await axios.post(token_url, data, {
-        headers: {
-          Authorization: `Basic ${auth_token}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
-      return response.data.access_token;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const spotifyRecommendationURI = `https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical&seed_tracks=0c6xIDDpzE81m2q797ordA&limit=10`;
 
-  const getRecommendations = async () => {
-    const access_token = await getAuth();
-
-    const response = await axios.get(spotifyRecommendationURI, {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    });
-
-    console.log(response.data.tracks);
-
-    const tracks = response.data.tracks;
-
-    tracks.forEach((track, key) => {
-      const trackObj = {
-        num: key,
-        albumId: track.album.id,
-        artist: track.artists[0].name,
-        albumName: sliceAlbum(track.album.name),
-        coverImg: track.album.images[0].url,
-      };
-      setSongs((songs) => [...songs, trackObj]);
-    });
-  };
-
   useEffect(() => {
+    const sliceAlbum = (album) => {
+      if (album.indexOf("(") !== -1) {
+        const newAlbumName = album.substring(0, album.indexOf("("));
+        return setAlbumLength(newAlbumName);
+      } else {
+        return setAlbumLength(album);
+      }
+    };
+
+    const getAuth = async () => {
+      try {
+        const token_url = "https://accounts.spotify.com/api/token";
+        const data = qs.stringify({ grant_type: "client_credentials" });
+
+        const response = await axios.post(token_url, data, {
+          headers: {
+            Authorization: `Basic ${auth_token}`,
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+        return response.data.access_token;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const getRecommendations = async () => {
+      const access_token = await getAuth();
+
+      const response = await axios.get(spotifyRecommendationURI, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+
+      const tracks = response.data.tracks;
+
+      tracks.forEach((track, key) => {
+        const trackObj = {
+          num: key,
+          albumId: track.album.id,
+          artist: track.artists[0].name,
+          albumName: sliceAlbum(track.album.name),
+          coverImg: track.album.images[0].url,
+        };
+        setSongs((songs) => [...songs, trackObj]);
+      });
+    };
+
     getRecommendations();
-  }, []);
+  }, [auth_token, spotifyRecommendationURI]);
 
   const setAlbumLength = (album) => {
     if (album.length > 12) {
       album = album.slice(0, 13);
-      console.log(album);
       return album + "..";
     } else return album;
-  };
-
-  const sliceAlbum = (album) => {
-    if (album.indexOf("(") !== -1) {
-      const newAlbumName = album.substring(0, album.indexOf("("));
-      return setAlbumLength(newAlbumName);
-    } else {
-      return setAlbumLength(album);
-    }
   };
 
   const nextHandler = () => {
@@ -146,6 +138,7 @@ const Recommender = () => {
               allowFullScreen
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
+              title="music-recommender"
             ></iframe>
           </div>
           <div className="button-container">
