@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
-
+import Suggestion from "./components/Suggestions/Suggestion";
 import Autocomplete from "./components/Autocomplete";
 import Recommender from "./components/MusicRecommender/recommneder";
 
@@ -14,6 +14,28 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+  
+
+  const weather = (weatherType) => {
+		switch (weatherType) {
+			case 'Rain':
+				return 'https://media.giphy.com/media/G0Odfjd78JTpu/giphy.gif';
+			case 'Clouds':
+				return 'https://i.pinimg.com/originals/56/92/a6/5692a6ad885acf2b870911694ad1b010.gif';
+			case 'Snow':
+				return 'https://i.pinimg.com/originals/39/3d/c6/393dc67bfedcfad62a1ae4c2dd83cbbd.gif';
+			case 'Clear':
+				return 'https://i.pinimg.com/originals/eb/03/6c/eb036c3b4ab6ac086f8da8ed8ac76eda.gif';
+			case 'Haze':
+				return 'https://i.makeagif.com/media/10-16-2018/rjxI8k.gif';
+			case 'Mist':
+				return 'https://i.pinimg.com/originals/83/e3/82/83e3828dc9e7af959262feaf7f1c46f7.gif ';
+      case 'Thunderstorm':
+        return "https://media.giphy.com/media/13ZEwDgIZtK1y/giphy.gif";
+			default:
+				return 'https://i.pinimg.com/originals/eb/03/6c/eb036c3b4ab6ac086f8da8ed8ac76eda.gif';
+		}
+	};
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -88,7 +110,6 @@ function App() {
     }
   }, [city, dateTime]);
 
-  // getting user's location
   useEffect(() => {
     if (!navigator.geolocation) {
       console.log("Geolocation is not supported by your browser");
@@ -158,7 +179,8 @@ function App() {
                     {results.name}, {results.sys.country}
                   </p>
                 </i>
-              </>
+                <img  src={weather(results.weather[0].main)} className= "bg_img"></img>
+          </>
             )}
             {isLoaded && !results && (
               <h2>
@@ -168,6 +190,12 @@ function App() {
           </div>
           <Recommender />
         </div>
+        <Suggestion
+          weatherType={
+            results?.weather[0]?.main ? results.weather[0].main : null
+          }
+          isLoaded={isLoaded}
+        ></Suggestion>
       </>
     );
   }
