@@ -83,11 +83,9 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
         border: "none",
         color: "black",
         textAlign: "center",
-        justifyContent: "center", 
         fontSize: "1rem",
         padding: "15px",
         width: "clam(6%,10px,20%)",
-        height: "min(3%, 5px, 10%)",
         transition: "all 0.5s",
         cursor: "pointer",       
       }}>Saved Locations</button>

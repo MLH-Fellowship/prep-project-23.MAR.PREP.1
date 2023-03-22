@@ -45,7 +45,7 @@ function Map({ city, handleCityChange }) {
         style={{
           width: "50vw",
           minHeight: "300px",
-          zIndex: "-1"     
+          zIndex: "-1"
         }}
       >
         <TileLayer
