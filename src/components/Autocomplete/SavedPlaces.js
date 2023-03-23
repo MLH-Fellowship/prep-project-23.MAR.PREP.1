@@ -33,7 +33,7 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
     // this is how the control the display of the modal
     const customStyles = {
       content: {
-          top: '50%',
+          top: '55%',
           left: '50%',
           right: 'auto',
           bottom: 'auto',
