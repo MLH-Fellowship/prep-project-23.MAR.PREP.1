@@ -168,7 +168,7 @@ function App() {
       <>
         <NavBar display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
         
-        <div>
+        <div className="wrapper">
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
             {!showBookmarks && <Autocomplete setCity={setCity} />}

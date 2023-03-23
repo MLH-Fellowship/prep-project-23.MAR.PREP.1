@@ -37,6 +37,11 @@ body {
   max-width: 400px;
 }
 
+.wrapper {
+  padding-top:10%;
+
+}
+
 .Results__card {
   background-color: white;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05),
@@ -97,6 +102,9 @@ body {
 @media (max-width: 768px) {
   .Results__card {
     width: 90%;
+  }
+  .wrapper {
+    padding-top:25%;
   }
 }
 @media (min-width: 769px) {
