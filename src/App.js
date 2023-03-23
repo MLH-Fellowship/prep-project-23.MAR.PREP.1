@@ -222,6 +222,7 @@ function App() {
           }
           isLoaded={isLoaded}
         ></Suggestion>
+        <br></br>
         <Footer></Footer>
       </>
     );
