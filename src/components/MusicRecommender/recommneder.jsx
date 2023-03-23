@@ -116,9 +116,6 @@ const Recommender = () => {
                 alt="album-cover"
               />
             </div>
-            <div className="emblem-container">
-              <div className="emblem text"></div>
-            </div>
             <div className="song-num">
               <span>{albumNumber(songs[currentSong].num + 1)}</span>
             </div>

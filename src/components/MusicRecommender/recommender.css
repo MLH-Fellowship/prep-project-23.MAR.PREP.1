@@ -6,6 +6,7 @@
   position: relative;
   margin: 2rem auto 4rem;
   border-radius: 12px;
+  /* border: 1px solid red; */
 }
 
 .recommendations:after {
@@ -41,6 +42,7 @@
   right: 0;
   transform: translate(55%, 40%);
   line-height: 1;
+  /* border: 1px solid red; */
 }
 
 .artist-name span {
@@ -49,7 +51,7 @@
   opacity: 0.8;
   font-weight: 500;
   color: #ebeae6;
-  text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.6);
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
 }
 
 .album-name {
@@ -99,7 +101,6 @@
   top: 0px;
   left: -100px;
   line-height: 1;
-  /* border: 1px solid red; */
 }
 
 .song-num span {
@@ -240,4 +241,160 @@
   opacity: 1;
   cursor: pointer;
   font-size: 22px;
+}
+
+@media only screen and (min-width: 920px) {
+  .artist-name {
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translate(35%, 40%);
+  }
+}
+
+@media only screen and (min-width: 780px) and (max-width: 920px) {
+  .hero-img {
+    width: 520px;
+  }
+
+  .spotify-widget {
+    width: 560px;
+  }
+
+  .album-name span {
+    font-size: 40px;
+  }
+
+  .artist-name {
+    width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .artist-name span {
+    font-size: 40px;
+  }
+
+  .song-num {
+    font-size: 25px;
+    top: 5px;
+  }
+}
+
+@media only screen and (min-width: 680px) and (max-width: 780px) {
+  .recommendations {
+    margin-bottom: 3rem;
+  }
+
+  .hero-img {
+    width: 460px;
+  }
+
+  .spotify-widget {
+    width: 520px;
+  }
+
+  .album-name span {
+    font-size: 38px;
+  }
+
+  .artist-name {
+    width: 250px;
+    transform: translate(35%, 20%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .artist-name span {
+    font-size: 38px;
+  }
+
+  .song-num {
+    font-size: 25px;
+    top: 9px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 680px) {
+  .recommendations {
+    margin-bottom: 3rem;
+  }
+
+  .hero-img {
+    width: 400px;
+    height: 130px;
+  }
+
+  .spotify-widget {
+    width: 460px;
+  }
+
+  .album-name {
+    left: -60px;
+  }
+
+  .album-name span {
+    font-size: 35px;
+  }
+
+  .artist-name {
+    width: 250px;
+    transform: translate(30%, 20%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .artist-name span {
+    font-size: 35px;
+  }
+
+  .song-num {
+    left: -60px;
+    font-size: 25px;
+    top: 9px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .recommendations {
+    width: 80vw;
+    margin-bottom: 3rem;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 130px;
+  }
+
+  .spotify-widget {
+    width: 85%;
+  }
+
+  .album-name {
+    left: -10%;
+  }
+
+  .album-name span {
+    font-size: 28px;
+  }
+
+  .artist-name {
+    /* border: 1px solid red; */
+    width: 180px;
+    transform: translate(20%, 20%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .artist-name span {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+  }
+
+  .song-num {
+    left: -10%;
+    font-size: 25px;
+    top: 9px;
+  }
 }
