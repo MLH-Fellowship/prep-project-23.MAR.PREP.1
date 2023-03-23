@@ -10,7 +10,7 @@ const AQI = ({ city }) => {
 
     const getLatLong = async () => {
       const data = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`
       );
 
       const res = await data.json();
@@ -30,7 +30,7 @@ const AQI = ({ city }) => {
 
     const getAQI = async () => {
       const data = await fetch(
-        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latLon.lat}&lon=${latLon.lon}&appid=e97438bd020333ca0058532e90aeac26`
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latLon.lat}&lon=${latLon.lon}&appid=${process.env.REACT_APP_APIKEY}`
       );
 
       const res = await data.json();
@@ -90,7 +90,7 @@ const AQI = ({ city }) => {
                   backgroundColor: item.color,
                 }}
               />
-              <div className="aqi-indicator-text">{item.text}</div>
+              <p className="aqi-indicator-text">{item.text}</p>
             </div>
           );
         })}
