@@ -1,8 +1,8 @@
 
 import "./NavBar.css"
-import logo from "./mlh-prep.png";
+import logo from "../../mlh-prep.png";
 import racoon from "./Marvel-Rocket-Raccoon-PNG-Pic-2160382602.png"
-import SavedPlaces from "./components/Autocomplete/SavedPlaces";
+import SavedPlaces from "./../Autocomplete/SavedPlaces";
 
 
 const NavBar = ({display, setUpdateIcon}) =>{

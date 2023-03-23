@@ -10,7 +10,7 @@ import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
-import NavBar from "./Navbar";
+import NavBar from "./components/NavBar/Navbar";
 
 
 function App() {
