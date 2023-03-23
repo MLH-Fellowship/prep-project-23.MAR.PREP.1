@@ -79,9 +79,9 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
       <button onClick={openModal} style={{
         display: "inline-block",
         borderRadius: "4px",
-        backgroundColor: "white",
+        backgroundColor: "black",
         border: "none",
-        color: "black",
+        color: "white",
         textAlign: "center",
         fontSize: "1rem",
         padding: "15px",

@@ -9,6 +9,8 @@ import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
+import NavBar from "./Navbar";
+
 
 function App() {
   const [error, setError] = useState(null);
@@ -164,7 +166,8 @@ function App() {
   } else {
     return (
       <>
-        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+        <NavBar display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
+        
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
@@ -172,7 +175,7 @@ function App() {
             {results && <Bookmarks results={results} updateIcon={updateIcon}/>}
           </div>
           <div>
-          <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} />
+          
 
           </div>
           <h2>Select a date and time </h2>

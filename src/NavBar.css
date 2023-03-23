@@ -15,3 +15,12 @@
 }
 
 
+@media screen and (max-width: 580px) {
+    .logo{
+        width: 0;
+        height: 0;
+    }
+
+
+
+}
