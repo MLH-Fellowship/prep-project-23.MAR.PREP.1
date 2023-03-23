@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Map from "./components/Autocomplete/map";
+import Map from "./components/Autocomplete/Map";
 import logo from "./mlh-prep.png";
 
 import Autocomplete from "./components/Autocomplete";
