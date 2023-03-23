@@ -143,8 +143,10 @@
   height: 56px;
   background: none;
   border: none;
-  color: #ebeae6;
-  opacity: 0.3;
+  /* color: #ebeae6; */
+  color: black;
+  /* opacity: 0.3; */
+  opacity: 1;
   font-weight: 500;
   text-transform: lowercase;
 }
@@ -153,6 +155,7 @@
   width: 80px;
   height: 2px;
   background: #ebeae6;
+  background: black;
   position: relative;
   display: flex;
   justify-content: center;
@@ -171,7 +174,8 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  border: 2px solid #ebeae6;
+  /* border: 2px solid #ebeae6; */
+  border: 2px solid black;
   left: 4px;
   transform: rotate(-45deg);
   border-bottom: none;
@@ -185,6 +189,7 @@
   height: 12px;
   border-radius: 50%;
   border: 2px solid #ebeae6;
+  border: 2px solid black;
   right: -14px;
 }
 
