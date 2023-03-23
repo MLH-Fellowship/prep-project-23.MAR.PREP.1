@@ -4,8 +4,6 @@ import Map from "./components/map/Map";
 import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
-
-
 import Suggestion from "./components/Suggestions/Suggestion";
 import Autocomplete from "./components/Autocomplete";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
@@ -216,6 +214,7 @@ function App() {
         <ToastContainer />
 
         <VoiceButton handleCityChange={handleCityChange} />
+
 
         <Suggestion
           weatherType={
