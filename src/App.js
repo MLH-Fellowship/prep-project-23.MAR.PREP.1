@@ -8,6 +8,7 @@ import Autocomplete from "./components/Autocomplete";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [error, setError] = useState(null);
@@ -212,6 +213,7 @@ function App() {
           }
           isLoaded={isLoaded}
         ></Suggestion>
+        <Footer></Footer>
       </>
     );
   }
