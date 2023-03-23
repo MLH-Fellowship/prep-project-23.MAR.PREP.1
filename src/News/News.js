@@ -13,7 +13,7 @@ const News = () => {
           `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=puhXmx3sZQZaciMSkqEHwcWOUDJ6dASu`
         )
         if(isComponentMounted){
-          setArticles(response.data.results);
+          setArticles(response.data.results.slice(0,5));
         }
       }catch(error){
         setError(error.response.data.message);
@@ -53,4 +53,4 @@ const News = () => {
 );
 };
 
-export default News;
+export default News;
