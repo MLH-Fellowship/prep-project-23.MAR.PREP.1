@@ -1,0 +1,26 @@
+.nav{
+    top: 0;
+    
+    background: rgba(0,0,0,.3);
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    padding: 1% ;
+    width: 98%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+@media screen and (max-width: 580px) {
+    .logo{
+        width: 0;
+        height: 0;
+    }
+
+
+
+}
