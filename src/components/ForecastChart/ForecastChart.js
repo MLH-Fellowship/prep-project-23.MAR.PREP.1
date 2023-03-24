@@ -52,7 +52,7 @@ function ForecastChart({ forecastInfo }) {
     <div className="forecast-container">
       <div className="forecast-chart">
         <div className="forecast-chart-header">
-          <h2>Temperature Forecast</h2>
+          <h2>Temperature Forecast (°C)</h2>
           <button
             className="forecast-chart-toggle"
             onClick={toggleForecastTimeSpan}
