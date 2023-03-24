@@ -22,6 +22,7 @@ function ActivityRecommendation({ weatherCode }) {
     <>
       <div className="activity-recommendation-container">
         <h2>Perfect activity for this weather!</h2>
+      
         {recommendedactivity.map((activity, index) => (
           <div className="activity-box" key={index}>
             <h2 className="activity-name">{activity}</h2>

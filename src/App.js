@@ -6,12 +6,12 @@ import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
 import Suggestion from "./components/Suggestions/Suggestion";
-import Autocomplete from "./components/Autocomplete";
+import Autocomplete from "./components/Autocomplete/index";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
-import Activities from "./components/Autocomplete/index"
+import Activities from "./components/Autocomplete/ActivityManager"
 
 function App() {
   const [error, setError] = useState(null);
@@ -211,6 +211,9 @@ function App() {
             )}
           </div>
           <div className="activityRecommendation">
+            {
+              console.log("hello")
+            }
             {results && (
               <Activities weatherCode={results.weather[0].id} />
             )}
