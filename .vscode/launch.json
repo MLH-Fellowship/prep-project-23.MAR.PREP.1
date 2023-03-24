@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "http://npm install @types/react-leaflet",
+            "request": "launch",
+            "url": "http://npm install @types/react-leaflet"
+        }
+    ]
+}
