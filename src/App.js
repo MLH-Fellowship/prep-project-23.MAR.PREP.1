@@ -30,6 +30,8 @@ function App() {
 
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [updateIcon, setUpdateIcon] = useState(false);
+
+  const [mood, setMood] = useState("Happy");
   const [forecaseInfo, setForecastInfo] = useState({});
 
   const weather = (weatherType) => {
@@ -289,7 +291,7 @@ function App() {
             )}
           </div>
 
-          <Recommender />
+          <Recommender mood={mood} />
         </div>
 
         <ToastContainer />
