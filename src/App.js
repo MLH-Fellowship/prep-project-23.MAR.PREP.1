@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
 import ForecastChart from "./components/ForecastChart/ForecastChart";
 import Recommender from "./components/MusicRecommender/recommneder";
+import Loader from "./components/Loader";
 
 function App() {
   const [error, setError] = useState(null);
@@ -24,6 +25,7 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [updateIcon, setUpdateIcon] = useState(false);
@@ -176,6 +178,8 @@ function App() {
 
   if (error) {
     return <div>Error: {error.message}</div>;
+  } else if (loading) {
+    return <Loader />;
   } else {
     return (
       <>
