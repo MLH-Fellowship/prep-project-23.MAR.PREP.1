@@ -11,6 +11,7 @@ import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
+import Recommender from "./components/MusicRecommender/recommneder";
 
 function App() {
   const [error, setError] = useState(null);
@@ -215,6 +216,7 @@ function App() {
               </h2>
             )}
           </div>
+          <Recommender/>
         </div>
 
         <ToastContainer />
