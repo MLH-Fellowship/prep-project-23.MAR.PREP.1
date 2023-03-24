@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
+import News from './News/News.js';
 import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
@@ -20,6 +21,7 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [updateIcon, setUpdateIcon] = useState(false)
 
@@ -44,6 +46,7 @@ function App() {
         return "https://i.pinimg.com/originals/eb/03/6c/eb036c3b4ab6ac086f8da8ed8ac76eda.gif";
     }
   };
+  const[showNews, setShowNews] = useState(false);
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -165,7 +168,11 @@ function App() {
   } else {
     return (
       <>
+      <div className="header">
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+        <button className="top-headlines-button" onClick={() => setShowNews(!showNews)}>{!showNews ? "Top Headlines": "Hide Headlines"}</button>
+      </div>
+       {showNews && <News /> }
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
@@ -211,10 +218,12 @@ function App() {
           </div>
           <Recommender/>
         </div>
-        
+
         <ToastContainer />
-        
+
         <VoiceButton handleCityChange={handleCityChange} />
+
+
         <Suggestion
           weatherType={
             results?.weather[0]?.main ? results.weather[0].main : null

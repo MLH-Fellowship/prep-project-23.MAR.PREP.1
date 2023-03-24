@@ -1,0 +1,62 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 24px;
+  padding: 16px;
+}
+
+.card-body{
+  display: flex;
+}
+
+@media (max-width: 800px) {
+  .card-body{
+    flex-direction: column;    
+  }
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.card-link{
+  color: white;
+  text-decoration: none;
+}
+
+.card-img-top{
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-description{
+  flex: 1;
+  margin-left: 1rem;
+}
+/* Add styling to the error message */
+
+.error-box{
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.error-text{
+  color: #880808;
+  font-size: 0.9rem;
+  padding: 0.4rem;
+}
