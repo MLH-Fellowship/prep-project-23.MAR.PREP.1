@@ -52,7 +52,6 @@ body {
   height: clamp(200px, 60%, 600px);
 }
 
-
 .Results__card h2 {
   margin: 0;
   font-size: 1.5rem;
@@ -94,7 +93,6 @@ body {
   transition: background-color 0.3s ease-in-out;
 }
 
-
 @media (max-width: 768px) {
   .Results__card {
     width: 90%;
@@ -119,19 +117,19 @@ body {
   }
 }
 
-.ReactModal__Content{
+.ReactModal__Content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .bg_img {
-	background-size: cover;
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: -2;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
 }
 
 
@@ -244,8 +242,7 @@ body {
   cursor: pointer;
   position: absolute;
   right: 0;
-  }
-
+}
 
 .food-recommendation-container {
   display: flex;
@@ -276,13 +273,12 @@ body {
   text-align: center;
 }
 
-
-  @media (max-width: 800px) {
-    .top-headlines-button {
-      margin: 10px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      position: absolute;
-      right: 0;
-      }
+@media (max-width: 800px) {
+  .top-headlines-button {
+    margin: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
   }
+}
