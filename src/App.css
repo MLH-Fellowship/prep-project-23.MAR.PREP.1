@@ -2,6 +2,9 @@ body {
   background-color: #133667;
   color: white;
   text-align: center;
+  background-color: #133667;
+  color: white;
+  text-align: center;
 }
 
 .logo {
@@ -13,27 +16,28 @@ margin-top: 20px;
 }
 
 .input-container {
-padding: 10px;
-display: flex;
-justify-content: center;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-bar-container {
-width: 400px;
-margin: 0;
-font-size: 5.5rem;
-z-index: 999;
+  width: 400px;
+  margin: 0;
+  font-size: 5.5rem;
+  z-index: 999;
 }
 
 .Results {
-background-color: white;
-margin: 20px auto;
-border-radius: 8px;
-color: black;
-padding: 20px;
-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-width: 75%;
-max-width: 400px;
+  background-color: white;
+  margin: 20px auto;
+  border-radius: 8px;
+  color: black;
+  padding: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 75%;
+  max-width: 400px;
 }
 
 .activity-recommendation-container {
@@ -64,3 +68,87 @@ font-weight: normal;
 }
 
 
+
+.Results__card {
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05),
+    0 4px 8px rgba(0, 0, 0, 0.05), 0 8px 16px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin: 1rem 0;
+  padding-block-end: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: clamp(300px, 90%, 600px);
+  height: clamp(200px, 60%, 600px);
+}
+
+
+.Results__card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.Results__card__weather {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.Results__card__weather img {
+  margin-right: 1rem;
+  width: 50px;
+  height: 50px;
+}
+
+.Results__card__weather p {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.Results__card__table {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.Results__card__table td:first-child {
+  font-weight: bold;
+  padding-right: 1rem;
+}
+
+.Results__card:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+@media (max-width: 768px) {
+  .Results__card {
+    width: 90%;
+  }
+}
+@media (min-width: 769px) {
+  .Results__card {
+    width: 40%;
+    max-width: 600px;
+  }
+}
+
+.ReactModal__Content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bg_img {
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -2;
+}
