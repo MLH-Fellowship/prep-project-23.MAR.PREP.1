@@ -20,6 +20,7 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [updateIcon, setUpdateIcon] = useState(false)
 
@@ -215,10 +216,12 @@ function App() {
             )}
           </div>
         </div>
-        
+
         <ToastContainer />
-        
+
         <VoiceButton handleCityChange={handleCityChange} />
+
+
         <Suggestion
           weatherType={
             results?.weather[0]?.main ? results.weather[0].main : null
