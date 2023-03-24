@@ -16,6 +16,7 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/Navbar";
 import ForecastChart from "./components/ForecastChart/ForecastChart";
 import Recommender from "./components/MusicRecommender/recommneder";
+import Loader from "./components/Loader";
 
 function App() {
   const [error, setError] = useState(null);
@@ -25,6 +26,7 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [updateIcon, setUpdateIcon] = useState(false);
@@ -175,36 +177,31 @@ function App() {
     minTimestamp.split("T")[1].split(".")[0]
   }`;
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
   if (error) {
     return <div>Error: {error.message}</div>;
+  } else if (loading) {
+    return <Loader />;
   } else {
     return (
       <>
-        <NavBar display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
+        <NavBar showNews={showNews} setShowNews={setShowNews} display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
         
         <div className="wrapper_all">
-        <div className="header">
-          <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-          <button
-            className="top-headlines-button"
-            onClick={() => setShowNews(!showNews)}
-          >
-            {!showNews ? "Top Headlines" : "Hide Headlines"}
-          </button>
-        </div>
         {showNews && <News />}
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
-            {!showBookmarks && <Autocomplete setCity={setCity} />}
+          {!showBookmarks && <Autocomplete setCity={setCity} />}
             {results && <Bookmarks results={results} updateIcon={updateIcon} />}
           </div>
         <div>
-
-          <SavedPlaces
-            display={setShowBookmarks}
-            setUpdateIcon={setUpdateIcon}
-          />
         </div>
           <h2>Select a date and time </h2>
           <input
