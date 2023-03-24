@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
 import ForecastChart from "./components/ForecastChart/ForecastChart";
+import Recommender from "./components/MusicRecommender/recommneder";
 
 function App() {
   const [error, setError] = useState(null);
@@ -21,6 +22,7 @@ function App() {
   const [minTimestamp, setMinTimestamp] = useState(new Date().toISOString());
   const [maxTimestamp, setMaxTimestamp] = useState("");
   const [results, setResults] = useState(null);
+
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [updateIcon, setUpdateIcon] = useState(false);
   const [forecaseInfo, setForecastInfo] = useState({});
@@ -272,11 +274,14 @@ function App() {
             )}
           </div>
           
+          <Recommender/>
         </div>
 
         <ToastContainer />
 
         <VoiceButton handleCityChange={handleCityChange} />
+
+
         <Suggestion
           weatherType={
             results?.weather[0]?.main ? results.weather[0].main : null
