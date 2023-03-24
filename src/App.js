@@ -184,9 +184,8 @@ function App() {
             max={maxTimestamp}
             onChange={(event) => setDateTime(event.target.value)}
           />
-          <WeatherWidget />
           <Map city={city} handleCityChange={handleCityChange} />
-
+          {isLoaded && results && (<WeatherWidget cityid={results.id} /> )}
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
             {isLoaded && results && (

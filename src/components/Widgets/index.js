@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-
-const WeatherWidget = () => {
+import './widgets.css';
+const WeatherWidget = ({cityid}) => {
   useEffect(() => {
     if (!window.myWidgetParam) {
       window.myWidgetParam = [];
     }
     window.myWidgetParam.push({
-      id: 11,
-      cityid: '2643743',
+      id: 15,
+      cityid: cityid.toString(),
       appid: '9bcd1353025757509e1aa254f5c102b5',
       units: 'metric',
       containerid: 'openweathermap-widget-11'
@@ -21,10 +21,10 @@ const WeatherWidget = () => {
     return () => {
       parent.innerHTML = '';
     };
-  }, []);
+  }, [cityid]);
 
   return (
-    <div id="openweathermap-widget-11"></div>
+    <div id="openweathermap-widget-11" className="weather-widget"></div>
   );
 };
 
