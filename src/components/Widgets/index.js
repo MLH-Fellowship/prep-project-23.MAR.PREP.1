@@ -8,7 +8,7 @@ const WeatherWidget = ({cityid}) => {
     window.myWidgetParam.push({
       id: 15,
       cityid: cityid.toString(),
-      appid: '9bcd1353025757509e1aa254f5c102b5',
+      appid:  process.env.REACT_APP_WIDGETAPIKEY,
       units: 'metric',
       containerid: 'openweathermap-widget-11'
     });
