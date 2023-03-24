@@ -6,6 +6,7 @@ import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
 import Suggestion from "./components/Suggestions/Suggestion";
+import WeatherWidget from "./components/Widgets";
 import Autocomplete from "./components/Autocomplete";
 import AQI from "./components/AQICard";
 import FoodRecommendation from "./components/FoodRecommendation";
@@ -214,7 +215,7 @@ function App() {
             onChange={(event) => setDateTime(event.target.value)}
           />
           <Map city={city} handleCityChange={handleCityChange} />
-
+          {isLoaded && results && (<WeatherWidget cityid={results.id} /> )}
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
             {isLoaded && results && (
