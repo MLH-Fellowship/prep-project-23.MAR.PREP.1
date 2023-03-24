@@ -199,13 +199,13 @@ function App() {
             {!showBookmarks && <Autocomplete setCity={setCity} />}
             {results && <Bookmarks results={results} updateIcon={updateIcon} />}
           </div>
-          <div>
+        <div>
 
-            <SavedPlaces
-              display={setShowBookmarks}
-              setUpdateIcon={setUpdateIcon}
-            />
-          </div>
+          <SavedPlaces
+            display={setShowBookmarks}
+            setUpdateIcon={setUpdateIcon}
+          />
+        </div>
           <h2>Select a date and time </h2>
           <input
             type="datetime-local"
@@ -306,9 +306,10 @@ function App() {
           isLoaded={isLoaded}
         ></Suggestion>
         <br></br>
-        <ForecastChart forecastInfo={forecaseInfo} />
+        <ForecastChart forecastInfo={forecaseInfo} > </ForecastChart>
         <br></br>
         <Footer></Footer>
+        </div>
       </>
     );
   }
