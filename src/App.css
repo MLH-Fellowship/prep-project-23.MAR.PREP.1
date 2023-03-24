@@ -63,6 +63,7 @@ body {
   display: flex;
   align-items: center;
   margin: 1rem 0;
+  justify-content: center;
 }
 
 .Results__card__weather img {
@@ -96,11 +97,23 @@ body {
   .Results__card {
     width: 90%;
   }
+  .forecast-chart {
+    width: 90%;
+    margin: 10px;
+  }
+  .forecast-chart-header {
+    font-size: small;
+  }
+
 }
 @media (min-width: 769px) {
   .Results__card {
     width: 40%;
     max-width: 600px;
+  }
+  .forecast-chart {
+    width: 60%;
+    max-width: 700px;
   }
 }
 
@@ -118,6 +131,106 @@ body {
   left: 0;
   z-index: -2;
 }
+
+
+.forecast-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 1px;
+}
+.forecast-chart {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.forecast-chart-header {
+  display: flex;
+  align-items: center;
+  color: black;
+  padding: 5px 17px;
+}
+
+.forecast-chart-toggle {
+  margin: 0px;
+  margin-left: auto;
+  background-color: #3e9aeb;
+  border: 0;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.forecast-chart-toggle:hover {
+  background-color: #2c89da;
+}
+
+.Weather {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: space-between;
+ justify-content: center;
+ height: 100%;
+}
+
+.Weather__icon {
+ margin-top: 20px;
+ width: 100px;
+ height: 100px;
+}
+
+.Weather__description {
+ font-size: 2rem;
+ font-weight: bold;
+ margin-top: 20px;
+}
+
+.Weather__details {
+ margin-top: 20px;
+ font-size: 1.5rem;
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ grid-gap: 20px;
+ justify-items: center;
+}
+
+.Weather__detail {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+
+.Weather__label {
+ font-size: 1rem;
+ font-weight: bold;
+}
+
+.Weather__value {
+ font-size: 1.25rem;
+}
+
+.Weather__location {
+ margin-top: 20px;
+ font-style: italic;
+ font-size: 1.5rem;
+}
+
 /* Styling for News Headlines Section */
 
 .top-headlines-button {
