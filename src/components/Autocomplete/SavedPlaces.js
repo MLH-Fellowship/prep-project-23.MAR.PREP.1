@@ -33,7 +33,7 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
     // this is how the control the display of the modal
     const customStyles = {
       content: {
-          top: '50%',
+          top: '55%',
           left: '50%',
           right: 'auto',
           bottom: 'auto',
@@ -44,7 +44,7 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
           height:'min(60vh, 600px)',
           borderRadius: '20px',
           color:"black",
-          zIndex: "99"
+          zIndex: "-1"
           
       },
   };
@@ -79,9 +79,9 @@ const SavedPlaces = ({display, setUpdateIcon}) => {
       <button onClick={openModal} style={{
         display: "inline-block",
         borderRadius: "4px",
-        backgroundColor: "white",
+        backgroundColor: "black",
         border: "none",
-        color: "black",
+        color: "white",
         textAlign: "center",
         fontSize: "1rem",
         padding: "15px",
