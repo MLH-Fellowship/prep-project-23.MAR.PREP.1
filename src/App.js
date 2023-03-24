@@ -6,7 +6,7 @@ import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
 import Suggestion from "./components/Suggestions/Suggestion";
-import Autocomplete from "./components/Autocomplete/index";
+import Autocomplete from "./components/Autocomplete";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
