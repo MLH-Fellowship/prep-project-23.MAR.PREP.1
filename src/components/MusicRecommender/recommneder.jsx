@@ -106,7 +106,7 @@ const Recommender = () => {
 
   return (
     <div>
-      <h2>Recommended Songs</h2>
+      <h2 className="heading" >Recommended Songs</h2>
       {songs.length !== 0 ? (
         <>
           <div className="recommendations">

@@ -1,3 +1,10 @@
+.heading {
+  margin: 4rem auto 3rem;
+  font-size: 40px;
+  font-weight: 500;
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
+}
+
 .recommendations {
   display: flex;
   align-items: center;
@@ -6,7 +13,9 @@
   position: relative;
   margin: 2rem auto 4rem;
   border-radius: 12px;
-  /* border: 1px solid red; */
+  -webkit-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.66);
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.66);
 }
 
 .recommendations:after {
@@ -42,7 +51,6 @@
   right: 0;
   transform: translate(55%, 40%);
   line-height: 1;
-  /* border: 1px solid red; */
 }
 
 .artist-name span {
@@ -65,7 +73,6 @@
   height: fit-content;
   text-align: left;
   line-height: 1;
-  /* border: 1px solid red; */
 }
 
 @keyframes text-movement {
@@ -89,7 +96,7 @@
   opacity: 0.8;
   text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
   color: #ebeae6;
-  animation: text-movement 1s linear;
+  animation: text-movement 5s linear;
   /* transition-property: opacity, transform; */
   /* transition-duration: 1.4s, 0.5s; */
 }
@@ -123,6 +130,9 @@
 .spotify-widget iframe {
   border-radius: 12px;
   width: 100%;
+  -webkit-box-shadow: 0px 0px 25px 12px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 25px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 25px 12px rgba(0, 0, 0, 0.4);
 }
 
 .button-container {
