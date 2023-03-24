@@ -200,13 +200,59 @@ function App() {
             {!isLoaded && <h2>Loading...</h2>}
             {isLoaded && results && (
               <>
-                <h3>{results.weather[0].main}</h3>
-                <p>Feels like {results.main.feels_like}°C</p>
-                <i>
-                  <p>
-                    {results.name}, {results.sys.country}
-                  </p>
-                </i>
+                <div className="Results__card__weather">
+                  <div className="Weather">
+                    <img
+                      className="Weather__icon"
+                      src={`http://openweathermap.org/img/w/${results.weather[0].icon}.png`}
+                      alt={results.weather[0].description}
+                    />
+                    <div className="Weather__description">
+                      {results.weather[0].main}
+                    </div>
+                    <div className="Weather__details">
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Temperature</div>
+                        <div className="Weather__value">
+                          {results.main.temp}°C
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Feels Like</div>
+                        <div className="Weather__value">
+                          {results.main.feels_like}°C
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Humidity</div>
+                        <div className="Weather__value">
+                          {results.main.humidity}%
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Wind Speed</div>
+                        <div className="Weather__value">
+                          {results.wind.speed}m/s
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Max Temperature</div>
+                        <div className="Weather__value">
+                          {results.main.temp_max}°C
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Min Temperature</div>
+                        <div className="Weather__value">
+                          {results.main.temp_min}°C
+                        </div>
+                      </div>
+                    </div>
+                    <div className="Weather__location">
+                      {results.name}, {results.sys.country}
+                    </div>
+                  </div>
+                </div>
                 <img
                   src={weather(results.weather[0].main)}
                   className="bg_img"
