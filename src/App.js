@@ -176,6 +176,13 @@ function App() {
     minTimestamp.split("T")[1].split(".")[0]
   }`;
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (loading) {
