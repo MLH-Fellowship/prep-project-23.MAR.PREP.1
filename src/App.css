@@ -5,7 +5,7 @@ body {
 }
 
 .logo {
-  margin-left: auto;
+  margin-left: 33%;
   margin-right: auto;
   width: 20%;
   margin-top: 20px;
@@ -23,7 +23,7 @@ body {
   width: 400px;
   margin: 0;
   font-size: 5.5rem;
-  z-index: 999;
+  z-index: 5;
 }
 
 .Results {
@@ -93,9 +93,17 @@ body {
   transition: background-color 0.3s ease-in-out;
 }
 
+.wrapper_all {
+  padding-top:5%;
+
+}
+
 @media (max-width: 768px) {
   .Results__card {
     width: 90%;
+  }
+  .wrapper_all {
+    padding-top:30%;
   }
   .forecast-chart {
     width: 90%;

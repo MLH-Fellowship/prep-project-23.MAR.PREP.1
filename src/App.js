@@ -13,6 +13,7 @@ import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
+import NavBar from "./components/NavBar/Navbar";
 import ForecastChart from "./components/ForecastChart/ForecastChart";
 import Recommender from "./components/MusicRecommender/recommneder";
 
@@ -179,28 +180,18 @@ function App() {
   } else {
     return (
       <>
-        <div className="header">
-          <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-          <button
-            className="top-headlines-button"
-            onClick={() => setShowNews(!showNews)}
-          >
-            {!showNews ? "Top Headlines" : "Hide Headlines"}
-          </button>
-        </div>
+        <NavBar showNews={showNews} setShowNews={setShowNews} display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
+        
+        <div className="wrapper_all">
         {showNews && <News />}
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
-            {!showBookmarks && <Autocomplete setCity={setCity} />}
+          {!showBookmarks && <Autocomplete setCity={setCity} />}
             {results && <Bookmarks results={results} updateIcon={updateIcon} />}
           </div>
-          <div>
-            <SavedPlaces
-              display={setShowBookmarks}
-              setUpdateIcon={setUpdateIcon}
-            />
-          </div>
+        <div>
+        </div>
           <h2>Select a date and time </h2>
           <input
             type="datetime-local"
@@ -300,8 +291,11 @@ function App() {
           }
           isLoaded={isLoaded}
         ></Suggestion>
-        <ForecastChart forecastInfo={forecaseInfo} />
+        <br></br>
+        <ForecastChart forecastInfo={forecaseInfo} > </ForecastChart>
+        <br></br>
         <Footer></Footer>
+        </div>
       </>
     );
   }

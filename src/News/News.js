@@ -13,7 +13,7 @@ const News = () => {
           `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=puhXmx3sZQZaciMSkqEHwcWOUDJ6dASu`
         )
         if(isComponentMounted){
-          setArticles(response.data.results.slice(0,5));
+          setArticles(response.data.results.slice(0,1));
         }
       }catch(error){
         setError(error.response.data.message);
