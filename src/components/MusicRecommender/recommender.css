@@ -1,0 +1,400 @@
+.recommendations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  position: relative;
+  margin: 2rem auto 4rem;
+  border-radius: 12px;
+  /* border: 1px solid red; */
+}
+
+.recommendations:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  border-radius: 12px;
+  display: block;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+.hero-img {
+  width: 600px;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.album-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.artist-name {
+  position: absolute;
+  z-index: 11;
+  font-size: 50px;
+  bottom: 0px;
+  right: 0;
+  transform: translate(55%, 40%);
+  line-height: 1;
+  /* border: 1px solid red; */
+}
+
+.artist-name span {
+  font-size: 60px;
+  line-height: 1;
+  opacity: 0.8;
+  font-weight: 500;
+  color: #ebeae6;
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
+}
+
+.album-name {
+  position: absolute;
+  z-index: 11;
+  font-size: 50px;
+  width: 340px;
+  top: 35px;
+  left: -100px;
+  white-space: nowrap;
+  height: fit-content;
+  text-align: left;
+  line-height: 1;
+  /* border: 1px solid red; */
+}
+
+@keyframes text-movement {
+  0%,
+  20% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  40%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+}
+
+.album-name span {
+  font-size: 60px;
+  line-height: 1;
+  font-weight: 500;
+  display: block;
+  opacity: 0.8;
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
+  color: #ebeae6;
+  animation: text-movement 1s linear;
+  /* transition-property: opacity, transform; */
+  /* transition-duration: 1.4s, 0.5s; */
+}
+
+.song-num {
+  position: absolute;
+  z-index: 11;
+  font-size: 35px;
+  top: 0px;
+  left: -100px;
+  line-height: 1;
+}
+
+.song-num span {
+  font-size: 30px;
+  line-height: 1;
+  opacity: 0.8;
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
+  color: #ebeae6;
+  padding-left: 2px;
+}
+
+.spotify-widget {
+  width: 640px;
+  z-index: 100;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  margin-bottom: 2.5rem;
+}
+
+.spotify-widget iframe {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.button-container {
+  margin-bottom: 3rem;
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-arrow {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  height: 56px;
+  background: none;
+  border: none;
+  /* color: #ebeae6; */
+  color: black;
+  /* opacity: 0.3; */
+  opacity: 1;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.nav-arrow span {
+  width: 80px;
+  height: 2px;
+  background: #ebeae6;
+  background: black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.nav-arrow span:before,
+.nav-arrow span:after,
+.nav-arrow span {
+  transition: all 0.3s ease;
+}
+
+.nav-arrow span:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  /* border: 2px solid #ebeae6; */
+  border: 2px solid black;
+  left: 4px;
+  transform: rotate(-45deg);
+  border-bottom: none;
+  border-right: none;
+}
+
+.nav-arrow span:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #ebeae6;
+  border: 2px solid black;
+  right: -14px;
+}
+
+.nav-arrow:hover span:before,
+.key-press-hover-left span:before,
+.key-press-hover-right span:before {
+  width: 32px;
+  height: 32px;
+}
+
+.nav-arrow:hover span:after,
+.key-press-hover-left span:after,
+.key-press-hover-right span:after {
+  width: 48px;
+  height: 48px;
+  right: -26px;
+}
+
+.nav-arrow:hover span,
+.key-press-hover-left span,
+.key-press-hover-right span {
+  width: 72px;
+}
+
+.scroll-left:hover span,
+.key-press-hover-left span {
+  margin-right: 48px;
+}
+
+.scroll-right:hover span,
+.key-press-hover-right span {
+  margin-left: 48px;
+}
+
+.scroll-right span {
+  margin-left: 32px;
+  margin-right: 0;
+  transform: rotateY(180deg);
+}
+
+.key-press-hover-right span {
+  margin-left: 48px;
+}
+
+.nav-arrow:hover,
+.key-press-hover-left,
+.key-press-hover-right {
+  opacity: 1;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+@media only screen and (min-width: 920px) {
+  .artist-name {
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translate(35%, 40%);
+  }
+}
+
+@media only screen and (min-width: 780px) and (max-width: 920px) {
+  .hero-img {
+    width: 520px;
+  }
+
+  .spotify-widget {
+    width: 560px;
+  }
+
+  .album-name span {
+    font-size: 40px;
+  }
+
+  .artist-name {
+    width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .artist-name span {
+    font-size: 40px;
+  }
+
+  .song-num {
+    font-size: 25px;
+    top: 5px;
+  }
+}
+
+@media only screen and (min-width: 680px) and (max-width: 780px) {
+  .recommendations {
+    margin-bottom: 3rem;
+  }
+
+  .hero-img {
+    width: 460px;
+  }
+
+  .spotify-widget {
+    width: 520px;
+  }
+
+  .album-name span {
+    font-size: 38px;
+  }
+
+  .artist-name {
+    width: 250px;
+    transform: translate(35%, 20%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .artist-name span {
+    font-size: 38px;
+  }
+
+  .song-num {
+    font-size: 25px;
+    top: 9px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 680px) {
+  .recommendations {
+    margin-bottom: 3rem;
+  }
+
+  .hero-img {
+    width: 400px;
+    height: 130px;
+  }
+
+  .spotify-widget {
+    width: 460px;
+  }
+
+  .album-name {
+    left: -60px;
+  }
+
+  .album-name span {
+    font-size: 35px;
+  }
+
+  .artist-name {
+    width: 250px;
+    transform: translate(30%, 20%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .artist-name span {
+    font-size: 35px;
+  }
+
+  .song-num {
+    left: -60px;
+    font-size: 25px;
+    top: 9px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .recommendations {
+    width: 80vw;
+    margin-bottom: 3rem;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 130px;
+  }
+
+  .spotify-widget {
+    width: 85%;
+  }
+
+  .album-name {
+    left: -10%;
+  }
+
+  .album-name span {
+    font-size: 28px;
+  }
+
+  .artist-name {
+    /* border: 1px solid red; */
+    width: 180px;
+    transform: translate(20%, 20%);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .artist-name span {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+  }
+
+  .song-num {
+    left: -10%;
+    font-size: 25px;
+    top: 9px;
+  }
+}

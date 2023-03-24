@@ -11,30 +11,31 @@ function Map({ city, handleCityChange }) {
     setPosition([lat, lon]);
   };
 
-  const getLocation = async (city) => {
-    let locationData = await fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`
-    );
-
-    locationData = await locationData.json();
-    if (locationData && locationData.length !== 0) {
-      let lat = locationData[0]?.lat;
-      let lon = locationData[0]?.lon;
-
-      handlePositionChange(lat, lon);
-    }
-  };
-
   useEffect(() => {
+    const getLocation = async (city) => {
+      let locationData = await fetch(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.REACT_APP_APIKEY}`
+      );
+
+      locationData = await locationData.json();
+      if (locationData && locationData.length !== 0) {
+        let lat = locationData[0]?.lat;
+        let lon = locationData[0]?.lon;
+
+        handlePositionChange(lat, lon);
+      }
+    };
+
     if (city) getLocation(city);
   }, [city]);
 
   return (
-    <div
+    <div 
       style={{
         display: "flex",
         justifyContent: "center",
         paddingTop: "10px",
+        zIndex: "-1"
       }}
     >
       <MapContainer
@@ -44,6 +45,7 @@ function Map({ city, handleCityChange }) {
         style={{
           width: "50vw",
           minHeight: "300px",
+          zIndex: "-1"     
         }}
       >
         <TileLayer
