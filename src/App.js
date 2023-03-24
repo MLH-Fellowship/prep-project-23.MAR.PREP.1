@@ -180,10 +180,10 @@ function App() {
   } else {
     return (
       <>
-        <NavBar display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
+        <NavBar showNews={showNews} setShowNews={setShowNews} display={setShowBookmarks} setUpdateIcon={setUpdateIcon}/>
         
         <div className="wrapper_all">
-        <div className="header">
+        {/* <div className="header">
           <img className="logo" src={logo} alt="MLH Prep Logo"></img>
           <button
             className="top-headlines-button"
@@ -191,20 +191,20 @@ function App() {
           >
             {!showNews ? "Top Headlines" : "Hide Headlines"}
           </button>
-        </div>
+        </div> */}
         {showNews && <News />}
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
-            {!showBookmarks && <Autocomplete setCity={setCity} />}
+            <Autocomplete setCity={setCity} />
             {results && <Bookmarks results={results} updateIcon={updateIcon} />}
           </div>
         <div>
 
-          <SavedPlaces
+          {/* <SavedPlaces
             display={setShowBookmarks}
             setUpdateIcon={setUpdateIcon}
-          />
+          /> */}
         </div>
           <h2>Select a date and time </h2>
           <input
