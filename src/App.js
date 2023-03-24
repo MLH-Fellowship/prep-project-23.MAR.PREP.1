@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
-import News from './News/News.js';
+import News from "./News/News.js";
 import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
@@ -12,6 +12,7 @@ import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
+import Recommender from "./components/MusicRecommender/recommneder";
 
 function App() {
   const [error, setError] = useState(null);
@@ -45,7 +46,7 @@ function App() {
         return "https://i.pinimg.com/originals/eb/03/6c/eb036c3b4ab6ac086f8da8ed8ac76eda.gif";
     }
   };
-  const[showNews, setShowNews] = useState(false);
+  const [showNews, setShowNews] = useState(false);
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -174,11 +175,16 @@ function App() {
   } else {
     return (
       <>
-      <div className="header">
-        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-        <button className="top-headlines-button" onClick={() => setShowNews(!showNews)}>{!showNews ? "Top Headlines": "Hide Headlines"}</button>
-      </div>
-       {showNews && <News /> }
+        <div className="header">
+          <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+          <button
+            className="top-headlines-button"
+            onClick={() => setShowNews(!showNews)}
+          >
+            {!showNews ? "Top Headlines" : "Hide Headlines"}
+          </button>
+        </div>
+        {showNews && <News />}
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
@@ -225,12 +231,12 @@ function App() {
             )}
           </div>
           {city && <AQI city={city} />}
+          <Recommender />
         </div>
 
         <ToastContainer />
 
         <VoiceButton handleCityChange={handleCityChange} />
-
 
         <Suggestion
           weatherType={
