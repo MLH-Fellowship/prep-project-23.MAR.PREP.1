@@ -67,6 +67,7 @@ const AQI = ({ city }) => {
 
   return (
     <section className="info-container">
+      <h2>Air Quality Index</h2>
       <div className="aqi-container">
         {aqi.map((item, index) => (
           <div
