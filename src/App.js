@@ -12,6 +12,7 @@ import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
+import ForecastChart from "./components/ForecastChart/ForecastChart";
 import Recommender from "./components/MusicRecommender/recommneder";
 
 
@@ -25,8 +26,8 @@ function App() {
   const [results, setResults] = useState(null);
 
   const [showBookmarks, setShowBookmarks] = useState(false);
-  const [updateIcon, setUpdateIcon] = useState(false)
-
+  const [updateIcon, setUpdateIcon] = useState(false);
+  const [forecaseInfo, setForecastInfo] = useState({});
 
   const weather = (weatherType) => {
     switch (weatherType) {
@@ -62,6 +63,7 @@ function App() {
       .then((result) => {
         if (result.cod === "200") {
           setMaxTimestamp(result.list.slice(-1)[0].dt_txt);
+          setForecastInfo(result)
         }
       });
 
@@ -98,7 +100,9 @@ function App() {
           (error) => {
             setIsLoaded(true);
             setError(error);
-            toast.error("Error ${error.code}: ${error.message}. Please check your internet connection and try again.")
+            toast.error(
+              "Error ${error.code}: ${error.message}. Please check your internet connection and try again."
+            );
           }
         );
     } else {
@@ -125,26 +129,31 @@ function App() {
 
   useEffect(() => {
     if (!navigator.geolocation) {
-      console.log("Geolocation is not supported by your browser.")
+      console.log("Geolocation is not supported by your browser.");
       toast.error("Sorry, geolocation is not supported by your browser.");
     } else {
       navigator.geolocation.getCurrentPosition(
-        function(position){
-          const {latitude, longitude} = position.coords;
-          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
-            .then(res => res.json())
-            .then(
-              (result) => {
-                setIsLoaded(true);
-                setResults(result);
-                setCity(result.name);
-                toast.info(`Weather forecast data for ${result.name} was updated!`);
-              })
+        function (position) {
+          const { latitude, longitude } = position.coords;
+          fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+          )
+            .then((res) => res.json())
+            .then((result) => {
+              setIsLoaded(true);
+              setResults(result);
+              setCity(result.name);
+              toast.info(
+                `Weather forecast data for ${result.name} was updated!`
+              );
+            })
             .catch((error) => {
-                setIsLoaded(true);
-                setError(error);
-                toast.error("Error ${error.code}: ${error.message}. Please check your internet connection and try again.")
-              })
+              setIsLoaded(true);
+              setError(error);
+              toast.error(
+                "Error ${error.code}: ${error.message}. Please check your internet connection and try again."
+              );
+            });
         },
         function (error) {
           console.error(`Error: ${error.message}`);
@@ -179,11 +188,13 @@ function App() {
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
             {!showBookmarks && <Autocomplete setCity={setCity} />}
-            {results && <Bookmarks results={results} updateIcon={updateIcon}/>}
+            {results && <Bookmarks results={results} updateIcon={updateIcon} />}
           </div>
           <div>
-          <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} />
-
+            <SavedPlaces
+              display={setShowBookmarks}
+              setUpdateIcon={setUpdateIcon}
+            />
           </div>
           <h2>Select a date and time </h2>
           <input
@@ -199,13 +210,59 @@ function App() {
             {!isLoaded && <h2>Loading...</h2>}
             {isLoaded && results && (
               <>
-                <h3>{results.weather[0].main}</h3>
-                <p>Feels like {results.main.feels_like}°C</p>
-                <i>
-                  <p>
-                    {results.name}, {results.sys.country}
-                  </p>
-                </i>
+                <div className="Results__card__weather">
+                  <div className="Weather">
+                    <img
+                      className="Weather__icon"
+                      src={`http://openweathermap.org/img/w/${results.weather[0].icon}.png`}
+                      alt={results.weather[0].description}
+                    />
+                    <div className="Weather__description">
+                      {results.weather[0].main}
+                    </div>
+                    <div className="Weather__details">
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Temperature</div>
+                        <div className="Weather__value">
+                          {results.main.temp}°C
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Feels Like</div>
+                        <div className="Weather__value">
+                          {results.main.feels_like}°C
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Humidity</div>
+                        <div className="Weather__value">
+                          {results.main.humidity}%
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Wind Speed</div>
+                        <div className="Weather__value">
+                          {results.wind.speed}m/s
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Max Temperature</div>
+                        <div className="Weather__value">
+                          {results.main.temp_max}°C
+                        </div>
+                      </div>
+                      <div className="Weather__detail">
+                        <div className="Weather__label">Min Temperature</div>
+                        <div className="Weather__value">
+                          {results.main.temp_min}°C
+                        </div>
+                      </div>
+                    </div>
+                    <div className="Weather__location">
+                      {results.name}, {results.sys.country}
+                    </div>
+                  </div>
+                </div>
                 <img
                   src={weather(results.weather[0].main)}
                   className="bg_img"
@@ -218,12 +275,12 @@ function App() {
               </h2>
             )}
           </div>
-
           <div className="FoodRecommendation">
             {results && (
               <FoodRecommendation weatherCode={results.weather[0].id} />
             )}
           </div>
+
           <Recommender/>
         </div>
 
@@ -238,6 +295,7 @@ function App() {
           }
           isLoaded={isLoaded}
         ></Suggestion>
+        <ForecastChart forecastInfo={forecaseInfo} />
         <Footer></Footer>
       </>
     );
