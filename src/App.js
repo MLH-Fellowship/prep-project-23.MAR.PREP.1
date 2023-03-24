@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/map/Map";
-import News from './News/News.js';
+import News from "./News/News.js";
 import logo from "./mlh-prep.png";
 import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
@@ -23,8 +23,14 @@ function App() {
   const [results, setResults] = useState(null);
 
   const [showBookmarks, setShowBookmarks] = useState(false);
-  const [updateIcon, setUpdateIcon] = useState(false)
+  const [updateIcon, setUpdateIcon] = useState(false);
 
+  const [mood, setMood] = useState("Happy");
+
+  useEffect(() => {
+    console.log(mood);
+  }, [mood])
+  
 
   const weather = (weatherType) => {
     switch (weatherType) {
@@ -46,7 +52,7 @@ function App() {
         return "https://i.pinimg.com/originals/eb/03/6c/eb036c3b4ab6ac086f8da8ed8ac76eda.gif";
     }
   };
-  const[showNews, setShowNews] = useState(false);
+  const [showNews, setShowNews] = useState(false);
 
   useEffect(() => {
     // make sure current time (minTimestamp) is up to date
@@ -96,7 +102,9 @@ function App() {
           (error) => {
             setIsLoaded(true);
             setError(error);
-            toast.error("Error ${error.code}: ${error.message}. Please check your internet connection and try again.")
+            toast.error(
+              "Error ${error.code}: ${error.message}. Please check your internet connection and try again."
+            );
           }
         );
     } else {
@@ -123,26 +131,31 @@ function App() {
 
   useEffect(() => {
     if (!navigator.geolocation) {
-      console.log("Geolocation is not supported by your browser.")
+      console.log("Geolocation is not supported by your browser.");
       toast.error("Sorry, geolocation is not supported by your browser.");
     } else {
       navigator.geolocation.getCurrentPosition(
-        function(position){
-          const {latitude, longitude} = position.coords;
-          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
-            .then(res => res.json())
-            .then(
-              (result) => {
-                setIsLoaded(true);
-                setResults(result);
-                setCity(result.name);
-                toast.info(`Weather forecast data for ${result.name} was updated!`);
-              })
+        function (position) {
+          const { latitude, longitude } = position.coords;
+          fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+          )
+            .then((res) => res.json())
+            .then((result) => {
+              setIsLoaded(true);
+              setResults(result);
+              setCity(result.name);
+              toast.info(
+                `Weather forecast data for ${result.name} was updated!`
+              );
+            })
             .catch((error) => {
-                setIsLoaded(true);
-                setError(error);
-                toast.error("Error ${error.code}: ${error.message}. Please check your internet connection and try again.")
-              })
+              setIsLoaded(true);
+              setError(error);
+              toast.error(
+                "Error ${error.code}: ${error.message}. Please check your internet connection and try again."
+              );
+            });
         },
         function (error) {
           console.error(`Error: ${error.message}`);
@@ -168,20 +181,27 @@ function App() {
   } else {
     return (
       <>
-      <div className="header">
-        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-        <button className="top-headlines-button" onClick={() => setShowNews(!showNews)}>{!showNews ? "Top Headlines": "Hide Headlines"}</button>
-      </div>
-       {showNews && <News /> }
+        <div className="header">
+          <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+          <button
+            className="top-headlines-button"
+            onClick={() => setShowNews(!showNews)}
+          >
+            {!showNews ? "Top Headlines" : "Hide Headlines"}
+          </button>
+        </div>
+        {showNews && <News />}
         <div>
           <h2>Enter a city below 👇</h2>
           <div className="input-container">
             {!showBookmarks && <Autocomplete setCity={setCity} />}
-            {results && <Bookmarks results={results} updateIcon={updateIcon}/>}
+            {results && <Bookmarks results={results} updateIcon={updateIcon} />}
           </div>
           <div>
-          <SavedPlaces display={setShowBookmarks} setUpdateIcon={setUpdateIcon} />
-
+            <SavedPlaces
+              display={setShowBookmarks}
+              setUpdateIcon={setUpdateIcon}
+            />
           </div>
           <h2>Select a date and time </h2>
           <input
@@ -216,13 +236,12 @@ function App() {
               </h2>
             )}
           </div>
-          <Recommender/>
+          <Recommender mood={mood} />
         </div>
 
         <ToastContainer />
 
         <VoiceButton handleCityChange={handleCityChange} />
-
 
         <Suggestion
           weatherType={
