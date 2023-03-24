@@ -123,11 +123,22 @@ body {
 /* Styling for News Headlines Section */
 
 .top-headlines-button {
+  background-color: white;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 7px;
   font-size: 1rem;
   margin: 30px 30px;
   cursor: pointer;
   position: absolute;
   right: 0;
+  }
+
+  @media (max-width: 800px) {
+    .top-headlines-button {
+      margin: 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      }
   }
