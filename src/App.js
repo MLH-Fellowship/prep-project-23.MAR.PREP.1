@@ -8,6 +8,7 @@ import VoiceButton from "./components/alan-ai/VoiceButton";
 import Suggestion from "./components/Suggestions/Suggestion";
 import Autocomplete from "./components/Autocomplete";
 import AQI from "./components/AQICard";
+import FoodRecommendation from "./components/FoodRecommendation";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -231,6 +232,11 @@ function App() {
             )}
           </div>
           {city && <AQI city={city} />}
+          <div className="FoodRecommendation">
+            {results && (
+              <FoodRecommendation weatherCode={results.weather[0].id} />
+            )}
+          </div>
           <Recommender />
         </div>
 

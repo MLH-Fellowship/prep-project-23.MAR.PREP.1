@@ -131,6 +131,35 @@ body {
   right: 0;
 }
 
+.food-recommendation-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 30px 20px;
+  background-color: rgb(49, 126, 219, 0.9);
+  margin: 20px auto;
+  border-radius: 8px;
+  width: 75%;
+  max-width: 400px;
+}
+
+.food-box {
+  background-color: white;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 4px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.food-name {
+  color: white;
+  font-size: 1.1em;
+  margin: 0;
+  text-align: center;
+}
+
 @media (max-width: 800px) {
   .top-headlines-button {
     margin: 10px;
