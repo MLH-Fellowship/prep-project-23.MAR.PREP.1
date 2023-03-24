@@ -17,6 +17,7 @@ import NavBar from "./components/NavBar/Navbar";
 import ForecastChart from "./components/ForecastChart/ForecastChart";
 import Recommender from "./components/MusicRecommender/recommneder";
 import Loader from "./components/Loader";
+import Activities from "./components/Activities/ActivityManger";
 
 function App() {
   const [error, setError] = useState(null);
@@ -280,6 +281,12 @@ function App() {
               <h2>
                 No results found for {city} at {dateTime}
               </h2>
+            )}
+          </div>
+          <div className="activityRecommendation">
+          
+            {results && (
+              <Activities weatherCode={results.weather[0].id} />
             )}
           </div>
           {city && <AQI city={city} />}

@@ -1,0 +1,41 @@
+{
+    "summer": [
+      "Hiking",
+      "Swimming",
+      "Picnic with friends",
+      "Jogging",
+      "Flying a kite",
+      "Grilling"
+    ],
+    "fall": [
+      
+      "Go apple picking",
+      "Fill up on fried food at the N.C. State Fair",
+      "Pick a pumpkin",
+      "Get lost in a corn maze",
+      "Go leaf peeping",
+      "Spend Halloween on Franklin Street",
+      "Celebrate spooky season with a haunted attraction",
+      "Catch some college football"
+    ],
+    "spring": [
+      "Plant a spring garden (or even just a plant or two)",
+      "See the cherry blossoms",
+      "Have a picnic at the park",
+      "Seek out the first crocuses, snowdrops, and other spring flowers",
+      "Go for a run",
+      "Take a hike",
+      "Start some seeds",
+      "Play softball"
+    ],
+    "winter": [
+      "Take A Ski Trip",
+      "Go Ice Skating",
+      "Go Sledding",
+      "Visit a Local Market",
+      "Have a Movie Night",
+      "Build a Snowman",
+      "Have a Game Night",
+      "Watch a Sports Game"
+    ]
+}  
