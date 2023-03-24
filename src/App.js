@@ -7,12 +7,14 @@ import Bookmarks from "./components/Autocomplete/Bookmarks";
 import VoiceButton from "./components/alan-ai/VoiceButton";
 import Suggestion from "./components/Suggestions/Suggestion";
 import Autocomplete from "./components/Autocomplete";
+import FoodRecommendation from "./components/FoodRecommendation";
 import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
 import ForecastChart from "./components/ForecastChart/ForecastChart";
 import Recommender from "./components/MusicRecommender/recommneder";
+
 
 function App() {
   const [error, setError] = useState(null);
@@ -273,7 +275,12 @@ function App() {
               </h2>
             )}
           </div>
-          
+          <div className="FoodRecommendation">
+            {results && (
+              <FoodRecommendation weatherCode={results.weather[0].id} />
+            )}
+          </div>
+
           <Recommender/>
         </div>
 
