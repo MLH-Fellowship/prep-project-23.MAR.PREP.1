@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState }from "react";
+import React from 'react';
 import "./App.css";
 import Map from "./components/Autocomplete/Map";
 import logo from "./mlh-prep.png";
@@ -10,7 +11,7 @@ import SavedPlaces from "./components/Autocomplete/SavedPlaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/Footer/Footer";
-import activityRecommendation from "./components/Autocomplete/Activities.json";
+import Activities from "./components/Autocomplete/index"
 
 function App() {
   const [error, setError] = useState(null);

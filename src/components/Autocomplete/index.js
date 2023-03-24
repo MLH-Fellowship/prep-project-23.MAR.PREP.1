@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import activitiesCategories from "./Activities.json";
+import activityCategories from "./Activities.json";
 
-function activityRecommendation({ weatherCode }) {
+function ActivityRecommendation({ weatherCode }) {
   const [recommendedactivity, setRecommendedactivities] = useState([]);
 
   useEffect(() => {
@@ -48,4 +48,4 @@ function chooseactivity(weatherCode) {
   }
 }
 
-export default activityRecommendation;
+export default ActivityRecommendation;
